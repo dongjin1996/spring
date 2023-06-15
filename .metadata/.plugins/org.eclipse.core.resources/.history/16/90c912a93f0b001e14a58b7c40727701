@@ -1,0 +1,5 @@
+package com.springproject.dao;
+
+public interface DeptDao {
+
+}

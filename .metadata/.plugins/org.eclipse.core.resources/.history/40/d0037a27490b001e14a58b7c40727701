@@ -1,0 +1,20 @@
+package com.springproject.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.springproject.dao.DeptDao;
+import com.springproject.dto.Dept;
+
+public class DeptServiceImpl implements DeptService{
+	
+	@Autowired
+	DeptDao deptdao;
+
+	@Override
+	public List<Dept> selectList() {
+		return deptdao.selectList();
+	}
+	
+}

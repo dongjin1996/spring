@@ -1,0 +1,5 @@
+package com.springquiz.dao;
+
+public interface StudentDao {
+
+}

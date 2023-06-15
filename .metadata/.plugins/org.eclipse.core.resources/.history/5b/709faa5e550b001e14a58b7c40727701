@@ -1,0 +1,13 @@
+package com.springquiz.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.springquiz.dao.StudentDao;
+
+@Service
+public class StudentServiceImpl implements StudentService{
+	
+	@Autowired
+	StudentDao studentdao;
+}
