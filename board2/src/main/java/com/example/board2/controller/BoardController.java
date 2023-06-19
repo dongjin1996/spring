@@ -134,8 +134,15 @@ public class BoardController {
 	
 	//수정페이지 보여줌
 	@RequestMapping(value = "/updated", method = RequestMethod.GET) //localhost 로 접속
-	public String updated(HttpServletRequest request, Model model) {
+	public String updated() {
 		
+		
+		return "bbs/updated";
+	}
+	
+	//게시글 수정하는기능 
+	@RequestMapping(value = "/updated_ok", method = RequestMethod.POST) //localhost 로 접속
+	public String updatedOK(HttpServletRequest request, Model model) {
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pageNum = request.getParameter("pageNum");
 		String searchKey = request.getParameter("searchKey");
@@ -144,13 +151,6 @@ public class BoardController {
 		if(searchValue != null) {
 			
 		}
-		
-		return "bbs/updated";
-	}
-	
-	//게시글 수정하는기능 
-	@RequestMapping(value = "/updated_ok", method = RequestMethod.POST) //localhost 로 접속
-	public String updatedOK() {
 		return "bbs/updated";
 	}
 }
