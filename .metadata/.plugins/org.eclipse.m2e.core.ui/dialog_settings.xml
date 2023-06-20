@@ -3,9 +3,9 @@
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
 			<item value="C:\Users\EZEN-28\eclipse-workspace\spring-board"/>
+			<item value="C:\Users\EZEN-28\eclipse-workspace\spring\spring-project"/>
 			<item value="C:\Users\EZEN-28\eclipse-workspace\spring\board2"/>
 			<item value="C:\Users\EZEN-28\eclipse-workspace\spring\spring-quiz"/>
-			<item value="C:\Users\EZEN-28\eclipse-workspace\spring\spring-project"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

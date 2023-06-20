@@ -15,4 +15,13 @@ public interface BoardDao {
 	public int getDataCount(String searchKey, String searchValue) throws Exception;
 	
 	public List<Board> getLists(String searchKey, String searchValue, int start, int end) throws Exception;
+	
+	public void updateHitCount(int num) throws Exception;
+	
+	public Board getReadData(int num) throws Exception;
+	
+	public void updateData(Board board) throws Exception;
+	
+	public void deleteData(int num) throws Exception;
+	
 }
