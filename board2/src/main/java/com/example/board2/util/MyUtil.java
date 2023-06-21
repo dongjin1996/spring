@@ -60,7 +60,7 @@ public class MyUtil {
 				sb.append("<font color=\"red\">" + page + "</font>&nbsp;");
 			} else {
 				//현재 선택한 페이지가 아니라면
-				sb.append("<a href=\"" + listUrl + "pageNum=" +page + "\">" + page + "</a>&nbsp;");
+				sb.append("<a href=\"" + listUrl + "pageNum=" + page + "\">" + page + "</a>&nbsp;");
 				// <a href="list?pageNum=7">7</a>&nbsp;
 			}
 			

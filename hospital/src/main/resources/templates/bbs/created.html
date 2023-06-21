@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+	<link rel="stylesheet" type="text/css" href="css/created.css"/>
+</th:block>
+	
+	
+	<div layout:fragment="opinion" id="bbs">
+		<form action="/created" method="post" name="myForm">
+	<div>
+		<div>
+			<dl>
+				<dt>이름</dt>
+				<dd>
+				<input type="text" name="name" siez="35"
+				maxlength="100" class="boxFT">
+				</dd>
+			</dl>
+		</div>
+		
+		
+		<div>
+			<dl>
+				<dt>생년월일</dt>
+				<dd>
+				<input type="text" name="birth" siez="60"
+				maxlength="100" class="boxFT">
+				</dd>
+			</dl>
+		</div>
+		
+		<div>
+			<dl>
+				<dt>E-Mail</dt>
+				<dd>
+				<input type="text" name="email" siez="60"
+				maxlength="50" class="boxFT">
+				</dd>
+			</dl>
+		</div>
+		
+		<div>
+			<dl>
+				<dt>증상</dt>
+				<dd>
+				<input type="text" name="simptom" siez="60"
+				maxlength="100" class="boxFT">
+				</dd>
+			</dl>
+		</div>
+		
+		<div>
+			<dl>
+				<dt>소견</dt>
+				<dd>
+				<textarea rows="12" cols="50" name="opinion"
+				class="boxTA"></textarea>
+				</dd>
+			</dl>
+		</div>
+		
+		<div>
+			<dl>
+				<dt>패스워드</dt>
+				<dd>
+				<input type="password" name="pwd" siez="35"
+				maxlength="15" class="boxFT">
+				</dd>
+			</dl>
+		</div>
+		
+	</div>	
+	
+	<div id="bbsCreated_footer">
+		<input type="button" value="등록하기" class="btn2" onclick="sendIt();" >
+		<input type="reset" value="다시입력" class="btn2" onclick="document.myForm.subject.focus();" >
+		<input type="button" value="작성취소" class="btn2" onclick="javascript:location.href='/list';">
+	</div>
+	
+		</form>
+	</div>
+	
+	<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		function sendIt() {
+			var f = document.myForm; //폼 태그
+			var str = f.name.value; //이름에 입력된 값
+			str = str.trim(); //공백 앞뒤로 없애기
+			
+			if(!str) {
+				alert("이름을 입력하세요.")
+				f.name.focus();
+				return;
+			}
+			
+			str = f.birth.value;
+			str = str.trim();
+			
+			if(!str) {
+				alert("생년월일을 입력하세요.")
+				f.birth.focus();
+				return;
+			}
+			
+			str = f.email.value;
+			str = str.trim();
+			
+			if(str) {
+				if(!isValidEmail(str)) {
+					alert("정상적인 이메일을 입력하세요!");
+					f.email.focus();
+					return;
+				}
+			}
+			
+			str = f.simptom.value;
+			str = str.trim();
+			
+			if(!str) {
+				alert("증상을 제대로 입력해주세요!")
+				f.simptom.focus();
+				return;
+			}
+			
+			str = f.opinion.value;
+			str = str.trim();
+			
+			if(!str) {
+				alert("소견을 입력해주세요.")
+				f.opinion.focus;
+				return;
+			}
+			
+			str = f.pwd.value;
+			str = str.trim();
+			
+			if(!str) {
+				alert("패스워드를 입력해주세요.")
+				f.pwd.focus;
+				return;
+			}
+			
+			f.submit();
+		}
+	</script>
+	</th:block>
+	
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.hospital.dao.HospitalDao">
+	<select id="maxNum" resultType="Hospital">
+		select nvl(max(num), 0) from hospital
+	</select>
+	
+	<insert id="insertData" parameterType="Hospital">
+		insert into hospital 
+		values(#{num}, #{name}, #{pwd}, #{birth}, #{email}, #{simptom}, #{opinion}, sysdate)
+	</insert>
+	
+	<select id="getDataCount" parameterType="map" resultType="int">
+		select nvl(count(*), 0) from hospital
+		where ${searchKey} like '%' || #{searchValue} || '%'
+	</select>
+	
+	<select id="getLists" parameterType="map" resultType="Hospital">
+	select * from (
+	select rownum rnum, data.* from (
+    	select num, name, birth, symptom, to_char(created, 'YYYY-MM-DD') created
+    	from hospital
+    	where ${searchKey} like '%' || #{searchValue} || '%'
+    	order by num desc
+    	) data
+	)
+	<![CDATA[
+	where rnum >= #{start} and rnum <= #{end}
+	]]>
+	</select>
+	
+	<select id="getReadData" parameterType="int" resultType="Hospital">
+		select * from hospital where num = #{num}
+	</select>
+	
+	
+</mapper>
