@@ -11,30 +11,57 @@
 	
 	<div layout:fragment="opinion" id="bbs">
 		<div id="bbsArticle">
-		
-		<div >
-			<p></p>
-		</div>
-		
-		<div>
+		<div class="article-info">
 			<dl>
-				<dt>이름</dt>
-				<dd th:text="${hospital?.name}"></dd>
-				<dt>줄수</dt>
-				<dd th:text="${lineSu}"></dd>
+				<dt>성명</dt>
+				<dd th:text="${hospital.name}" id="article-name"></dd>
 			</dl>
 		</div>
 		
-		<div>
-			<table width="600" border="0">
+		
+		<div class="article-all">
+		
+		<div class="article-info1">
+			<dl>
+				<dt>생년월일</dt>
+				<dd th:text="${hospital.birth}"></dd>
+				<dt>E-Mail</dt>
+				<dd th:text="${hospital.email}"></dd>
+			</dl>
+		</div>
+		
+		<div class="article-info2">
+			<dl>
+				<dt>증상</dt>
+				<dd th:text="${hospital.symptom}"></dd>
+				<dt>등록일</dt>
+				<dd th:text="${hospital.created}"></dd>
+			</dl>
+		</div>
+		
+		</div>
+			<div id="article-opinion">소견</div>
+		
+		<div class="article-info2">
+			<table width="600" border="1">
 			<tr>
 				<td>
-				<textarea rows="12" cols="82" name="opinion" style="border: none"></textarea>
+				<textarea rows="12" cols="82" name="opinion" style="border: none" th:text="${hospital.opinion}"></textarea>
 				</td>
 			</tr>
 			</table>
 		</div>
 		
+		</div>
+		
+		<div class="article-btn">
+			<div>
+			<button type="button" class="btn btn-outline-success" th:onclick="|location.href='updated?num=@{${hospital.num}}&@{${params}}'|">수정</button>
+			<button type="button" class="btn btn-outline-info" th:onclick="|location.href='list?@{${params}}'|">리스트</button>			
+			</div>
+			<div>
+			<button type="button" class="btn btn-danger" th:onclick="|location.href='deleted_ok?num=@{${hospital.num}}&@{${params}}'|">삭제</button>
+			</div>
 		</div>
 	</div>
 

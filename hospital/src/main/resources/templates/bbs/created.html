@@ -11,64 +11,66 @@
 	
 	<div layout:fragment="opinion" id="bbs">
 		<form action="/created" method="post" name="myForm">
-	<div>
-		<div>
+	
+	<div class="created-list">
+				
+		<div class="created1">
+		
+		<div class="created_block1 created_bar">
 			<dl>
 				<dt>이름</dt>
 				<dd>
-				<input type="text" name="name" siez="35"
-				maxlength="100" class="boxFT">
+				<input class="form-control me-2" name= "name" type="text" placeholder="이름" maxlength="100" size="35">
 				</dd>
 			</dl>
-		</div>
-		
-		
-		<div>
+		<div class="created_block2 created_bar">
 			<dl>
 				<dt>생년월일</dt>
 				<dd>
-				<input type="text" name="birth" siez="60"
-				maxlength="100" class="boxFT">
+				<input class="form-control me-2" name= "birth" type="text" placeholder="생년월일 YYYY/MM/DD" maxlength="100" size="60">
 				</dd>
 			</dl>
 		</div>
-		
-		<div>
+			
+		</div>
+		</div>
+
+		<div class="created2">
+		<div class="created_block3 created_bar">
 			<dl>
 				<dt>E-Mail</dt>
 				<dd>
-				<input type="text" name="email" siez="60"
-				maxlength="50" class="boxFT">
+				<input class="form-control me-2" name= "email" type="text" placeholder="E-Mail" maxlength="100" size="60">
 				</dd>
 			</dl>
 		</div>
 		
-		<div>
+		<div class="created_block4 created_bar">
 			<dl>
 				<dt>증상</dt>
 				<dd>
-				<input type="text" name="simptom" siez="60"
-				maxlength="100" class="boxFT">
+				<input class="form-control me-2" name= "symptom" type="text" maxlength="100" size="60">
 				</dd>
 			</dl>
+		</div>
+		
 		</div>
 		
 		<div>
 			<dl>
 				<dt>소견</dt>
 				<dd>
-				<textarea rows="12" cols="50" name="opinion"
+				<textarea rows="12" cols="65" name="opinion"
 				class="boxTA"></textarea>
 				</dd>
 			</dl>
 		</div>
 		
-		<div>
+		<div class="created_bar">
 			<dl>
 				<dt>패스워드</dt>
 				<dd>
-				<input type="password" name="pwd" siez="35"
-				maxlength="15" class="boxFT">
+				<input class="form-control me-2" name= "pwd" type="password" maxlength="15" size="35">
 				</dd>
 			</dl>
 		</div>
@@ -76,9 +78,13 @@
 	</div>	
 	
 	<div id="bbsCreated_footer">
-		<input type="button" value="등록하기" class="btn2" onclick="sendIt();" >
-		<input type="reset" value="다시입력" class="btn2" onclick="document.myForm.subject.focus();" >
-		<input type="button" value="작성취소" class="btn2" onclick="javascript:location.href='/list';">
+	<div>
+	<button class="btn btn-outline-success" type="button" onclick="sendIt();">등록하기</button>
+	</div>
+	<div>
+	<button class="btn btn-outline-secondary" type="reset" onclick="document.myForm.subject.focus();">다시입력</button>
+	<button class="btn btn-outline-danger" type="button" onclick="javascript:location.href='/list';">작성취소</button>
+	</div>
 	</div>
 	
 		</form>
@@ -117,7 +123,7 @@
 				}
 			}
 			
-			str = f.simptom.value;
+			str = f.symptom.value;
 			str = str.trim();
 			
 			if(!str) {

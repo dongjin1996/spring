@@ -1,10 +1,164 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout1}">
 
-</body>
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+	<link rel="stylesheet" type="text/css" href="css/created.css"/>
+</th:block>
+
+	<div layout:fragment="opinion" id="bbs">
+		<form action="/updated_ok" method="post" name="myForm">
+	
+	<div class="created-list">
+		
+		
+		<div class="created1">
+		
+		<div class="created_block1 created_bar">
+			<dl>
+				<dt>이름</dt>
+				<dd>
+				<input class="form-control me-2" name= "name" type="text" placeholder="이름" maxlength="100" size="35" th:value="${hospital.name}">
+				</dd>
+			</dl>
+		<div class="created_block2 created_bar">
+			<dl>
+				<dt>생년월일</dt>
+				<dd>
+				<input class="form-control me-2" name= "birth" type="text" placeholder="생년월일 YYYY/MM/DD" maxlength="100" size="60" th:value="${hospital.birth}">
+				</dd>
+			</dl>
+		</div>
+			
+		</div>
+		</div>
+
+		<div class="created2">
+		<div class="created_block3 created_bar">
+			<dl>
+				<dt>E-Mail</dt>
+				<dd>
+				<input class="form-control me-2" name= "email" type="text" placeholder="E-Mail" maxlength="100" size="60" th:value="${hospital.email}">
+				</dd>
+			</dl>
+		</div>
+		
+		<div class="created_block4 created_bar">
+			<dl>
+				<dt>증상</dt>
+				<dd>
+				<input class="form-control me-2" name= "symptom" type="text" maxlength="100" size="60" th:value="${hospital.symptom}">
+				</dd>
+			</dl>
+		</div>
+		
+		</div>
+		
+		<div>
+			<dl>
+				<dt>소견</dt>
+				<dd>
+				<textarea rows="12" cols="65" name="opinion"
+				class="boxTA" th:text="${hospital.opinion}"></textarea>
+				</dd>
+			</dl>
+		</div>
+		
+		<div class="created_bar">
+			<dl>
+				<dt>패스워드</dt>
+				<dd>
+				<input class="form-control me-2" name= "pwd" type="password" maxlength="15" size="35" th:value="${hospital.pwd}">
+				</dd>
+			</dl>
+		</div>
+		
+	</div>	
+	
+	<div id="bbsCreated_footer">
+		<input type ="hidden" name="num" th:value="${hospital.num}">
+		<input type ="hidden" name="pageNum" th:value="${pageNum}">
+		<input type ="hidden" name="searchKey" th:value="${searchKey}">
+		<input type ="hidden" name="searchValue" th:value="${searchValue}">
+	<div>
+	<button class="btn btn-outline-success" type="button" onclick="sendIt();">수정 등록하기</button>
+	</div>
+	<div>
+	<button class="btn btn-outline-danger" type="button" th:onclick="|location.href='list?@{${params}}'|">수정취소</button>
+	</div>
+	</div>
+	
+		</form>
+	</div>
+	
+	
+	
+	<th:block layout:fragment="script">
+	<script th:inline="javascript">
+		function sendIt() {
+			var f = document.myForm; //폼 태그
+			var str = f.name.value; //이름에 입력된 값
+			str = str.trim(); //공백 앞뒤로 없애기
+			
+			if(!str) {
+				alert("이름을 입력하세요.")
+				f.name.focus();
+				return;
+			}
+			
+			str = f.birth.value;
+			str = str.trim();
+			
+			if(!str) {
+				alert("생년월일을 입력하세요.")
+				f.birth.focus();
+				return;
+			}
+			
+			str = f.email.value;
+			str = str.trim();
+			
+			if(str) {
+				if(!isValidEmail(str)) {
+					alert("정상적인 이메일을 입력하세요!");
+					f.email.focus();
+					return;
+				}
+			}
+			
+			str = f.symptom.value;
+			str = str.trim();
+			
+			if(!str) {
+				alert("증상을 제대로 입력해주세요!")
+				f.simptom.focus();
+				return;
+			}
+			
+			str = f.opinion.value;
+			str = str.trim();
+			
+			if(!str) {
+				alert("소견을 입력해주세요.")
+				f.opinion.focus;
+				return;
+			}
+			
+			str = f.pwd.value;
+			str = str.trim();
+			
+			if(!str) {
+				alert("패스워드를 입력해주세요.")
+				f.pwd.focus;
+				return;
+			}
+			
+			f.submit();
+		}
+	</script>
+	</th:block>
+
 </html>

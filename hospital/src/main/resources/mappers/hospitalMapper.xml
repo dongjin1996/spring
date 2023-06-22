@@ -4,13 +4,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.hospital.dao.HospitalDao">
-	<select id="maxNum" resultType="Hospital">
+	<select id="maxNum" resultType="int">
 		select nvl(max(num), 0) from hospital
 	</select>
 	
 	<insert id="insertData" parameterType="Hospital">
 		insert into hospital 
-		values(#{num}, #{name}, #{pwd}, #{birth}, #{email}, #{simptom}, #{opinion}, sysdate)
+		values(#{num}, #{name}, #{pwd}, #{birth}, #{email}, #{symptom}, #{opinion}, sysdate)
 	</insert>
 	
 	<select id="getDataCount" parameterType="map" resultType="int">
@@ -35,6 +35,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getReadData" parameterType="int" resultType="Hospital">
 		select * from hospital where num = #{num}
 	</select>
+	
+	<update id="updateData" parameterType="Hospital">
+		update hospital set name = #{name}, pwd= #{pwd}, email= #{email},
+		symptom= #{symptom}, opinion= #{opinion}, birth= #{birth} where num = #{num}
+	</update>
+	
+	<delete id="deleteData" parameterType="int">
+		delete hospital where num = #{num}
+	</delete>
 	
 	
 </mapper>

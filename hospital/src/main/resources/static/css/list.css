@@ -1,1 +1,54 @@
 @charset "UTF-8";
+
+
+/*검색바, 버튼*/
+.form-control {
+	width: 200px !important;
+	display: inline;
+}
+
+.list-btn {
+	text-align: center;
+	border-top: 2px solid black;
+}
+
+#bbsList_list {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	padding: 20px;
+}
+
+th, td {
+	padding: 25px;
+}
+
+.btn1 {
+	padding: 10px;
+}
+
+.search-btn {
+	padding-right: 10px;
+}
+/*검색기능 등록기능*/
+.list-form {
+	display: flex;
+	justify-content: center;
+	padding-top: 20px;
+	margin-right: 10px;
+}
+
+.list-top {
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+}
+
+#list-name {
+	font-weight: bold !important;	
+}
+
+.main-btn {
+	display: flex;
+	justify-content: space-around;
+}
+

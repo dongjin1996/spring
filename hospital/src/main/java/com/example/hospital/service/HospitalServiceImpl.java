@@ -40,5 +40,15 @@ public class HospitalServiceImpl implements HospitalService{
 		return hospitalMapper.getReadData(num);
 	}
 
+	@Override
+	public void updateData(Hospital hospital) throws Exception {
+		hospitalMapper.updateData(hospital);
+	}
+
+	@Override
+	public int deleteData(int num) throws Exception {
+		return hospitalMapper.deleteData(num);
+	}
+
 
 }

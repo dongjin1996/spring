@@ -17,4 +17,8 @@ public interface HospitalDao {
 	public List<Hospital> getLists(String searchKey, String searchValue, int start, int end) throws Exception;
 	
 	public Hospital getReadData(int num) throws Exception;
+	
+	public void updateData(Hospital hospital) throws Exception;
+	
+	public int deleteData(int num) throws Exception;
 }

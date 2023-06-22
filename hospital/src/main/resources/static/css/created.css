@@ -1,2 +1,30 @@
 @charset "UTF-8";
 
+body {
+	height: 100%;
+}
+
+.created-list {
+	display: grid;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.created_bar {
+	width: 500px;
+	display: flex;
+}
+
+#bbsCreated_footer {
+	display: flex;
+	justify-content: space-between;
+	width: 600px;
+	margin: 0 auto;
+}
+
+dt {
+	padding-bottom: 6px;
+}
+
+
+

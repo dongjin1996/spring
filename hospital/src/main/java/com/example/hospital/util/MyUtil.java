@@ -53,7 +53,7 @@ public class MyUtil {
 		
 		while(page <= totalPage && page <= (currentPageSetup + numPerBlock)) {
 			if(page == currentPage) {
-				sb.append("<font color=\"blue\">" + page + "</font>&nbsp;");
+				sb.append("<font color=\"red\">" + page + "</font>&nbsp;");
 			}else {
 				//현재 선택반 페이지가 아니라면
 				sb.append("<a href=\"" + listUrl + "pageNum=" + page + "\">" + page + "</a>&nbsp;");

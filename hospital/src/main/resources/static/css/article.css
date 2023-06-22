@@ -1,1 +1,58 @@
 @charset "UTF-8";
+
+#bbs.opinion {
+	width: 800px;
+}
+
+#bbsArticle{
+
+}
+
+.article-info {
+	text-align: center;
+	margin-top: 20px;
+	font-size: 18px;
+}
+
+.article-info1 {
+	
+}
+
+.article-info2{
+	display: flex;
+	justify-content: center;
+}
+
+.article-btn {
+	display: flex;
+	justify-content: space-around;
+}
+
+.article-all{
+	display: flex;
+	justify-content: space-around;
+	border: 1px solid green;
+	border-radius: 5px;
+	width: 631px;
+	margin: 0 auto;
+}
+
+.article-btn {
+	margin-top: 20px;
+}
+
+#article-opinion {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	font-size: 18px;
+	font-weight: bold;
+
+}
+
+#article-name{
+	color: black;
+	font-size: 30px;
+	font-weight: bold;
+}
