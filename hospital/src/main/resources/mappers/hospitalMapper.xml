@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<insert id="insertData" parameterType="Hospital">
 		insert into hospital 
-		values(#{num}, #{name}, #{pwd}, #{birth}, #{email}, #{symptom}, #{opinion}, sysdate)
+		values(#{num}, #{name}, #{pwd}, #{birth}, #{email}, #{symptom}, #{tel}, #{opinion}, sysdate)
 	</insert>
 	
 	<select id="getDataCount" parameterType="map" resultType="int">
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getLists" parameterType="map" resultType="Hospital">
 	select * from (
 	select rownum rnum, data.* from (
-    	select num, name, birth, symptom, to_char(created, 'YYYY-MM-DD') created
+    	select num, name, birth, symptom, tel, to_char(created, 'YYYY-MM-DD') created
     	from hospital
     	where ${searchKey} like '%' || #{searchValue} || '%'
     	order by num desc
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<update id="updateData" parameterType="Hospital">
 		update hospital set name = #{name}, pwd= #{pwd}, email= #{email},
-		symptom= #{symptom}, opinion= #{opinion}, birth= #{birth} where num = #{num}
+		symptom= #{symptom}, tel=#{tel}, opinion= #{opinion}, birth= #{birth} where num = #{num}
 	</update>
 	
 	<delete id="deleteData" parameterType="int">

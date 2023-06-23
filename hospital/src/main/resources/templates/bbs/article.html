@@ -24,29 +24,34 @@
 		<div class="article-info1">
 			<dl>
 				<dt>생년월일</dt>
-				<dd th:text="${hospital.birth}"></dd>
+				<dd class="article-dd" th:text="${hospital.birth}"></dd>
 				<dt>E-Mail</dt>
-				<dd th:text="${hospital.email}"></dd>
+				<dd class="article-dd" th:text="${hospital.email}"></dd>
 			</dl>
 		</div>
 		
 		<div class="article-info2">
 			<dl>
 				<dt>증상</dt>
-				<dd th:text="${hospital.symptom}"></dd>
-				<dt>등록일</dt>
-				<dd th:text="${hospital.created}"></dd>
+				<dd class="article-dd" th:text="${hospital.symptom}"></dd>
+				<dt>전화번호</dt>
+				<dd class="article-dd" th:text="${hospital.tel}"></dd>
 			</dl>
 		</div>
-		
+		<div>
+			<dl id="article-created">
+				<dt>등록일</dt>
+				<dd class="article-dd" th:text="${hospital.created}"></dd>
+			</dl>
+		</div>		
 		</div>
 			<div id="article-opinion">소견</div>
 		
 		<div class="article-info2">
-			<table width="600" border="1">
+			<table width="631">
 			<tr>
 				<td>
-				<textarea rows="12" cols="82" name="opinion" style="border: none" th:text="${hospital.opinion}"></textarea>
+				 <textarea class="form-control" id="exampleFormControlTextarea1" rows="12" cols="82" name="opinion" th:text="${hospital.opinion}"></textarea>
 				</td>
 			</tr>
 			</table>

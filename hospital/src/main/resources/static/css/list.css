@@ -21,6 +21,7 @@
 
 th, td {
 	padding: 25px;
+	border: 1px inset;
 }
 
 .btn1 {
@@ -52,3 +53,21 @@ th, td {
 	justify-content: space-around;
 }
 
+/*메뉴선택  */
+.selectField {
+	width: 150px;
+}
+
+.num {
+	font-weight: bold;
+}
+
+.delete-btn {
+	margin-left: 10px;
+	width: 86px;
+	height: 46px;
+}
+
+.selectField {
+	margin-right: 10px;
+}

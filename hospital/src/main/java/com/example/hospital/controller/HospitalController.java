@@ -257,6 +257,8 @@ public class HospitalController {
 		String searchValue = request.getParameter("searchValue");
 		String param = "?pageNum" + pageNum;
 		
+
+		
 		try {
 			hospitalService.deleteData(num);
 			

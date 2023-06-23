@@ -24,10 +24,10 @@
 				</dd>
 			</dl>
 		<div class="created_block2 created_bar">
-			<dl>
+			<dl id="created-birth">
 				<dt>생년월일</dt>
 				<dd>
-				<input class="form-control me-2" name= "birth" type="text" placeholder="생년월일 YYYY/MM/DD" maxlength="100" size="60">
+				<input class="form-control me-2 birth-select" name= "birth" type="date" placeholder="생년월일 YYYY/MM/DD" maxlength="100" size="60">
 				</dd>
 			</dl>
 		</div>
@@ -41,6 +41,15 @@
 				<dt>E-Mail</dt>
 				<dd>
 				<input class="form-control me-2" name= "email" type="text" placeholder="E-Mail" maxlength="100" size="60">
+				</dd>
+			</dl>
+		</div>
+		
+		<div class="created_block5 created_bar">
+			<dl>
+				<dt>전화번호</dt>
+				<dd>
+				<input class="form-control me-2" name= "tel" type="tel" placeholder="전화번호" maxlength="100" size="60">
 				</dd>
 			</dl>
 		</div>
@@ -60,8 +69,7 @@
 			<dl>
 				<dt>소견</dt>
 				<dd>
-				<textarea rows="12" cols="65" name="opinion"
-				class="boxTA"></textarea>
+				 <textarea class="form-control" id="exampleFormControlTextarea1" rows="12" cols="65" name="opinion"></textarea>
 				</dd>
 			</dl>
 		</div>
@@ -83,7 +91,7 @@
 	</div>
 	<div>
 	<button class="btn btn-outline-secondary" type="reset" onclick="document.myForm.subject.focus();">다시입력</button>
-	<button class="btn btn-outline-danger" type="button" onclick="javascript:location.href='/list';">작성취소</button>
+	<button class="btn btn-outline-danger " type="button" onclick="javascript:location.href='/list';">작성취소</button>
 	</div>
 	</div>
 	
@@ -120,6 +128,17 @@
 					alert("정상적인 이메일을 입력하세요!");
 					f.email.focus();
 					return;
+				}
+			}
+			
+			str = f.tel.value;
+			str = str.trim();
+			
+			if(str){
+				if(!isValidTel(str)) {
+					alert("전화번호를 제대로 입력해주세요!")
+					f.tel.focus();
+					return;					
 				}
 			}
 			

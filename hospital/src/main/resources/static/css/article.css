@@ -15,12 +15,14 @@
 }
 
 .article-info1 {
-	
+	margin-top : 10px;
 }
 
 .article-info2{
 	display: flex;
 	justify-content: center;
+	margin-top : 10px;
+	
 }
 
 .article-btn {
@@ -55,4 +57,16 @@
 	color: black;
 	font-size: 30px;
 	font-weight: bold;
+}
+
+#article-created {
+	margin-top: 40px;
+}
+
+.btn-danger {
+	margin-left: 300px;
+}
+
+.article-dd {
+	border-bottom: 1px outset;
 }

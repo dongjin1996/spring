@@ -12,15 +12,16 @@
 	<div layout:fragment="opinion" id="bbsList">
 	<div id="bbsList_header">
 		<div>
-			<form  class="list-form" action="list" method="post" name="searchForm">
-				<select name="searchKey" class="selectField">
-					<option value="name">이름</option>
-					<option value="birth">생년월일</option>
-					<option value="symptom">증상</option>
+			<form  class="list-form" action="list" method="post" name="searchForm">	
+				<select class="form-select selectField" name="searchKey" aria-label="Default select example">
+				  <option value="name">이름</option>
+				  <option value="birth">생년월일</option>
+				  <option value="tel">전화번호</option>
+				  <option value="symptom">증상</option>
 				</select>
 				
       <form class="d-flex" role="search">
-        <input class="form-control me-2" name= "searchValue" type="search" placeholder="입력" aria-label="Search">
+        <input class="form-control me-2" name= "searchValue" type="search" placeholder="입력" aria-label="Search">      
         <div class="search-btn">
         <button class="btn btn-outline-success btn1 search-btn" type="button" onclick="sendIt();">검색하기</button>
         </div>
@@ -40,6 +41,7 @@
 				<th class="num">번호</th>
 				<th class="name">이름</th>
 				<th class="birth">생년월일</th>
+				<th class="tel">전화번호</th>
 				<th class="symptom">증상</th>
 				<th class="created">작성일</th>
 			</tr>
@@ -48,24 +50,23 @@
 		
 
 			<tr th:if="${#lists.size(lists)} > 0" th:each="hospital:${lists}">
-			
 				<td class="num" th:text="${hospital.num}"></td>
 				<td class="name">
 					<a th:href="|@{${articleUrl}}&num=@{${hospital.num}}|" th:text="${hospital.name}" id="list-name"></a>
 				</td>
 				<td class="birth" th:text="${hospital.birth}"></td>
+				<td class="tel" th:text="${hospital.tel}"></td>
 				<td class="symptom" th:text="${hospital.symptom}"></td>
 				<td class="created" th:text="${hospital.created}"></td>
 			</tr>
 			
 						
 			<tr class="list-btn" th:if="${#lists.size(dataCount)} > 0">
-				<td colspan="5" id="footer">
-					<a th:utext="${pageIndexList}"></a>
-					
+				<td colspan="6" id="footer">
+					<a th:utext="${pageIndexList}"></a> 
+
 				</td>
 			</tr>
-			
 			
 			<tr th:if="${#lists.size(dataCount)} < 0">
 				<td colspan ="5">등록된 게시물이 없습니다.</td>
@@ -95,6 +96,8 @@
 			
 			f.submit();
 		}
+		
+
 	</script>
 	</th:block>
 

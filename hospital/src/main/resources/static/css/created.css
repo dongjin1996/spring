@@ -26,5 +26,13 @@ dt {
 	padding-bottom: 6px;
 }
 
+#created-birth {
+	margin-left: 80px;
+}
+
+.birth-select {
+	width: 220px;
+	
+}
 
 

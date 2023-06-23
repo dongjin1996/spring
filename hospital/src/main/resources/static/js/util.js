@@ -21,6 +21,13 @@ function isValidKorean(data){
     return false;
 }
 
+function isValidTel(tel) {
+	var format = /^\d{2,3}-?\d{3,4}-?\d{4}$/;
+	if (tel.search(format) != -1)
+		return true;
+		return false;
+}
+
 // 날짜 검사
 function isValidDate(year, month, day) {
 	var days = new Array (31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);

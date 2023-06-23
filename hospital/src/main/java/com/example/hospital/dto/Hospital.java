@@ -13,6 +13,7 @@ public class Hospital {
 	private String birth; //생일
 	private String email; //이메일
 	private String symptom;  //증상
+	private String tel;  //전화번호
 	private String opinion; //소견
 	private String created; //등록일
 }
