@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+	
+	    <!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+	<style>
+
+	</style>
+</th:block>
+
+<div layout:fragment="content">
+	<div class="bg-light py-3">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 mb-0">
+					<a href="/">Home</a> <span class="mx-2 mb-0">/</span> 
+					<strong class="text-black">상품등록</strong>
+				</div>
+			</div>
+		</div>
+	</div>	
+	
+	<div class="site-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="h3 mb-3 text-black">상품등록</h2>
+					<div class="p-3 p-lg-5 border">
+						<form role="form" action="" method="" enctype="multipart/form-data" 
+							name="itemForm">
+
+							<input type="hidden" />
+
+							<div class="form-group row">
+								<div class="col-md-12">
+									<select class="form-select">
+										<option value="SELL">판매중</option>
+										<option value="SOLD_OUT">품절</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="itemNm" class="text-black">상품명</label>
+									<input type="text" class="form-control" placeholder="상품명 입력">
+									<p>Incorrect Data</p>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="price" class="text-black">가격</label>
+									<input type="text" class="form-control" placeholder="가격 입력">			
+									<p>Incorrect Data</p>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="stockNumber" class="text-black">재고</label> 
+									<input type="text" class="form-control" placeholder="재고 입력">
+									<p>Incorrect Data</p>
+								</div>
+							</div>
+							
+							<div class="form-group row">
+								<div class="col-md-12">
+									<label th:for="itemDetail" class="text-black">상품 상세내용</label> 
+                                    <textarea rows=10 class="form-control" placeholder="상품 상세내용" id="floatingTextarea"></textarea>
+                                    <p>Incorrect Data</p>
+								</div>
+							</div>
+							
+							
+							<div class="form-group row">
+								<div class="col-md-12">
+								 	<label for="formFile" class="form-label"></label>
+  									<input class="form-control" type="file" id="itemImgFile" name="itemImgFile">
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="col-md-12 d-flex justify-content-center">
+									<button type="button" onclick="" class="btn btn-primary mb-3" style="width:150px;">상품등록</button>
+								</div>
+							</div>
+
+			
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	
+	  <!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+	</script>
+</th:block>
+</html>
