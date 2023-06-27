@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+	
+	    <!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+	<style>
+
+	</style>
+</th:block>
+
+<div layout:fragment="content">
+<body class="sub_page">
+  <section class="book_section layout_padding">
+  
+	 <div class="container">
+      <div class="heading_container">
+        <h2 style="margin-left: 200px">
+          LOGIN
+        </h2>
+      </div>
+      <div class="row">
+      	<div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="form_container">
+            <form action="">
+              <div>
+                <input type="text" class="form-control" placeholder="ID" />
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Pass Word" />
+              </div>
+              <div>
+              <label>아이디 저장</label>
+                <input type="checkbox">              
+              </div>
+              <div class="btn_box">
+                <button>
+                  로그인
+                </button>
+                <button>
+				<a href="/member/new">회원가입</a>
+                </button>
+                <button>
+				<a href="/member/pwdfind">비밀번호 찾기</a>                
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </section>
+	
+	
+	
+</body>
+</div>
+	
+	  <!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+	</script>
+</th:block>
+</html>

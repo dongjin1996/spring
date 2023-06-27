@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+	
+	    <!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+	<style>
+
+	</style>
+</th:block>
+
+<div layout:fragment="content">
+<body class="sub_page">
+	<section class="book_section layout_padding">
+  
+	 <div class="container">
+      <div class="heading_container">
+        <h2 style="margin-left: 200px">
+          Q&A
+        </h2>
+      </div>
+      <div class="row">
+      	<div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="form_container">
+            <form action="">
+              <div>
+              <label>제목</label>
+                <input type="text" class="form-control" />
+              </div>
+              <div>
+              <label>내용</label>
+ 				<textarea class="form-control" id="exampleFormControlTextarea1" style="height: 300px" rows="50" cols="30"></textarea>
+              </div>
+              <div class="btn_box">
+                <button>
+                  문의넣기
+                </button>
+                <button>
+				<a href="/member/pwdfind">취소</a>                
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </section>
+</body>
+</div>
+
+	
+	  <!-- 각 페이지의 스크립트가 작성될 위치 -->
+<th:block layout:fragment="script">
+	<script th:inline="javascript">
+	</script>
+</th:block>
+</html>
