@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      <!-- 레이아웃 기능을 사용하기 위해 추가 -->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>myshop</title>
+
+<!-- 경로가 @{css/bootstrap.min.css} 가 되지 않도록 조심  -->
+<!-- 공통으로 쓰이는 CSS-->
+<link rel="stylesheet" th:href="@{https://fonts.googleapis.com/css?family=Mukta:300,400,700}"> 
+<link rel="stylesheet" th:href="@{/fonts/icomoon/style.css}">
+
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+<link rel="stylesheet" th:href="@{/css/jquery-ui.css}">
+<link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+<link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
+
+<link rel="stylesheet" th:href="@{/css/aos.css}">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css"></th:block>
+</head>
+<body>
+ <div class="site-wrap">
+    <!-- fragments/header.html의 header를 가지고와 치환한다. -->
+    <div th:replace="fragments/header::header"></div>
+
+    <!-- 레이아웃에서 변경될 영역을 설정 -->
+    <!-- 해당 위치에 content라는 레이아웃 코드를 불러온다 -->
+    <div layout:fragment="content" class="content"></div>
+
+    <!-- fragments/footer.html의 footer를 가지고와 치환한다. -->
+    <div th:replace="fragments/footer::footer"></div>
+  </div> 
+  
+    <!-- 공통으로 쓰이는 자바스크립트 -->
+    <script src="/js/jquery-3.3.1.min.js"></script>
+  	<script th:src="@{/js/jquery-ui.js}"></script>
+  	<script th:src="@{/js/popper.min.js}"></script>
+  	<script th:src="@{/js/bootstrap.min.js}"></script>
+  	<script th:src="@{/js/owl.carousel.min.js}"></script>
+  	<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+  	<script th:src="@{/js/aos.js}"></script>
+
+  	<script th:src="@{/js/main.js}"></script>
+  	
+	<!-- 각 페이지의 스크립트가 작성될 위치 -->
+	<th:block layout:fragment="script"></th:block>
+</body>
+</html>
