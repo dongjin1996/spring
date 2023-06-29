@@ -11,5 +11,23 @@ public class ItemController {
 	public String itemMenu() {
 		return "/item/itemMenu";
 	}
+	
+	//상품등록 페이지
+	@GetMapping(value = "item/itemForm")
+	public String itemForm() {
+		return "/item/itemForm";
+	}
+	
+	//상품관리 페이지
+	@GetMapping(value = "item/itemMng")
+	public String itemMng() {
+		return "/item/itemMng";
+	}
+	
+	//상품수정 페이지
+	@GetMapping(value = "item/itemModify")
+	public String itemModify() {
+		return "/item/itemModify";
+	}
 
 }

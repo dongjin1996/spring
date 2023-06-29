@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="C:\Users\EZEN-28\eclipse-workspace\spring\myshop-main"/>
 			<item value="C:\Users\EZEN-28\eclipse-workspace\spring\fastfood"/>
 			<item value="C:\Users\EZEN-28\eclipse-workspace\spring\shopmax\src\main\java\com\shopmax\controller\MemberController.java"/>
 			<item value="C:\Users\EZEN-28\eclipse-workspace\spring\shopmax"/>

@@ -18,13 +18,18 @@ body {
   cursor : pointer;
   font-size : 15px;
 }
+
+.dropbtn:hover  {
+	color: #FFB820 !important;
+}
+
 .dropdown-content{
   display : none;
   position : absolute;
   z-index : 1; /*다른 요소들보다 앞에 배치*/
   font-weight: 400;
   background-color: #12171A;
-  min-width : 200px;
+  min-width : 130px;
   padding: 0px;
   list-style: none;
 }
@@ -209,7 +214,7 @@ a:focus {
 }
 
 .custom_nav-container .navbar-nav {
-  padding-left: 18%;
+  padding-left: 13%;
 }
 
 .custom_nav-container .navbar-nav .nav-item .nav-link {
@@ -1052,3 +1057,22 @@ a:focus {
   color: inherit;
 }
 /*# sourceMappingURL=style.css.map */
+
+.itemMng-page {
+	display: flex;
+	justify-content: center;
+}
+
+.itemMng-add {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.itemModify-btn {
+	display: flex;
+	justify-content: space-between;
+}
+
+.modify-delete {
+	background-color: #dc3545 !important;
+}

@@ -18,6 +18,18 @@ public class MemberController {
 		return "member/qa";
 	}
 	
+	//문의리스트 페이지
+	@GetMapping(value = "/member/qaList")
+	public String qaList() {
+		return "member/qaList";
+	}
+	
+	//문의보기 페이지
+	@GetMapping(value = "/member/qaInfo")
+	public String qaInfo() {
+		return "member/qaInfo";
+	}
+	
 	//로그인 페이지
 	@GetMapping(value = "/member/login")
 	public String loginMember() {

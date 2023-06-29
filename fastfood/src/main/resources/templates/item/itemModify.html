@@ -11,6 +11,61 @@
 </th:block>
 
 <div layout:fragment="content">
+<body class="sub_page">
+	<section class="book_section layout_padding">
+  
+	 <div class="container">
+      <div class="heading_container">
+        <h2 style="margin-left: 200px">
+          상품수정
+        </h2>
+      </div>
+      <div class="row">
+      	<div class="col-md-2"></div>
+        <div class="col-md-8">
+          <div class="form_container">
+            <form action="">
+              <div>
+              <label>상품명</label>
+                <input type="text" class="form-control" placeholder="상품명 입력" />
+              </div>
+              <div>
+              <label>가격</label>
+                <input type="text" class="form-control" placeholder="가격 입력" />
+              </div>
+              <div>
+              <label>재고</label>
+                <input type="text" class="form-control" placeholder="재고 입력" />
+              </div>
+              <div>
+              <label>메뉴 상세내용</label>
+				<textarea rows=10 class="form-control" placeholder="상품 상세내용" id="floatingTextarea" style="height: 100%;"></textarea>
+              </div>
+              <div>
+              <label></label>
+                <input type="file" class="form-control" />
+              </div>
+              <div class="btn_box itemModify-btn">
+              <div>
+                <button>
+                  수정완료
+                </button>
+                <button th:onclick="javascript:location.href='/';">
+				취소
+                </button>
+              </div>
+              <div>
+                <button class="modify-delete">삭제</button>
+              </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
+      </div>
+    </div>
+  </section>
+</body>
 </div>
 	
 	  <!-- 각 페이지의 스크립트가 작성될 위치 -->

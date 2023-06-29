@@ -2,20 +2,88 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
-	
-	    <!-- 각 페이지의 CSS가 작성될 위치 -->
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css">
 	<style>
-
-	</style>
+</style>
 </th:block>
 
 <div layout:fragment="content">
+	<body class="sub_page">
+		<section class="book_section layout_padding">
+
+			<div class="container">
+				<div class="heading_container">
+					<h2 style="margin-left: 200px">상품관리</h2>
+				</div>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<div class="form_container">
+							<form action="">
+								<table class="table">
+									<thead>
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">상품명</th>
+											<th scope="col">내용</th>
+											<th scope="col">등록일자</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row">1</th>
+											<td><a href="#" style="color: red">맛있는 피자</a></td>
+											<td>치즈쭉쭉</td>
+											<td>2023/06/29</td>
+										</tr>
+										<tr>
+											<th scope="row">2</th>
+											<td>Jacob</td>
+											<td>Thornton</td>
+											<td>@fat</td>
+										</tr>
+										<tr>
+											<th scope="row">3</th>
+											<td colspan="2">Larry the Bird</td>
+											<td>@twitter</td>
+										</tr>
+									</tbody>
+								</table>
+								<div>
+									<nav aria-label="Page navigation example">
+										<ul class="pagination itemMng-page">
+											<li class="page-item"><a class="page-link" href="#"
+												aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+											</a></li>
+											<li class="page-item"><a class="page-link" href="#">1</a></li>
+											<li class="page-item"><a class="page-link" href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+											<li class="page-item"><a class="page-link" href="#"
+												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+											</a></li>
+										</ul>
+									</nav>
+								</div>
+								<div class="btn_box float-end itemMng-add">
+									<button >상품등록 하러가기</button>
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+			</div>
+		</section>
+	</body>
 </div>
-	
-	  <!-- 각 페이지의 스크립트가 작성될 위치 -->
+
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
+		
 	</script>
 </th:block>
 </html>

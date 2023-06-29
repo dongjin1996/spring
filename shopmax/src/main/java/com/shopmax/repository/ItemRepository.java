@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 
 import com.shopmax.constant.ItemSellStatus;
@@ -41,11 +42,11 @@ public interface ItemRepository extends JpaRepository<Item, Long>{
 	List<Item> findByItemDetailByNative(@Param("itemDetail")String itemDetail);
 	
 	
-	//Query 퀴즈1
+	//Query non-query 퀴즈1
 	@Query("select i from Item i where i.price >= :price")
 	List<Item> findByPrice(@Param("price") int price);
 	
-	//Query 퀴즈2
+	//Query non-query 퀴즈2
 	@Query("select i from Item i where i.itemNm = :itemNm and i.itemSellStatus = :sell")
 	List<Item> findByitemNmByitemSellStatus(@Param("itemNm")String itemNm, @Param("sell")ItemSellStatus sell);
 	
