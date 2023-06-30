@@ -10,9 +10,53 @@
 </th:block>
 
 <div layout:fragment="content">
-<body class="sub_page">
-<h2>상품정보페이지</h2>
-</body>
+	<body class="sub_page">
+
+		<section class="food_section layout_padding">
+			<div class="container">
+			<form action="">
+				<div class="heading_container heading_center">
+
+					<h3 class="qa-h3">상품정보페이지</h3>
+
+				</div>
+
+
+				<div class="filters-content">
+					<div class=" itemInfo-main">
+						<div class=" all pizza itemInfo-main_info">
+							<div class="box">
+								<div>
+									<div class="img-box">
+										<img src="/images/f1.png" alt="">
+									</div>
+									<div class="detail-box">
+										<h5>Delicious Pizza</h5>
+										<p>Veniam debitis quaerat officiis quasi cupiditate quo,
+											quisquam velit, magnam voluptatem repellendus sed eaque</p>
+										<div class="options">
+											<h6>$20</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="btn_box float-end itemMng-add itemInfo-add ">
+					<div style="margin-right: 10px">
+						<button class=" itemInfo-btn">수정하기</button>
+					</div>
+					<div>
+						<button class=" itemInfo-btn" th:onclick="location.href='/item/itemMng'">취소</button>
+					</div>
+
+				</div>
+			</form>
+			</div>
+		</section>
+
+	</body>
 </div>
 <!-- 각 페이지의 스크립트가 작성될 위치 -->
 <th:block layout:fragment="script">

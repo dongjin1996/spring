@@ -11,7 +11,63 @@
 
 <div layout:fragment="content">
 <body class="sub_page">
-<h2>문의정보페이지</h2>
+	<section class="book_section layout_padding">
+
+			<div class="container">
+				<div class="heading_container">
+					<h3 style="margin-left: 200px" class="qa-h3">문의 내용</h3>
+				</div>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<div class="form_container">
+							<form action="">
+								<table class="table">
+									<thead>
+										<tr class="qaInfo-tr">
+											<th class="qaInfo-th" scope="col">글번호</th>
+											<td class= "qaInfo-num">번호</td>
+											<th class="qaInfo-th" scope="col">작성자</th>
+											<td>작성자이름</td>
+											<th class="qaInfo-th" scope="col">작성일자</th>
+											<td>2023/06/30</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="qaInfo-tr">
+											<th scope="row">제목</th>
+											<td>제목목</td>
+				
+										</tr>
+										
+								</table>
+								<table>
+										<tr class="qaInfo-tr">
+											<th class="qaInfo-tr_th" scope="row">내용</th>
+											<td class="qaInfo-text">
+											<textarea class="form-control qaInfo-textarea" id="exampleFormControlTextarea1" rows="30"></textarea>
+											</td>
+										</tr>
+
+									</tbody>
+								</table>
+
+								<div class="btn_box float-end itemMng-add">
+								<div style="margin-right: 10px">
+									<button >작성하기</button>
+								</div>
+								<div>
+									<button th:onclick="location.href='/'">취소</button>
+								</div>
+
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+			</div>
+		</section>
 </body>
 </div>
 

@@ -29,5 +29,11 @@ public class ItemController {
 	public String itemModify() {
 		return "/item/itemModify";
 	}
+	
+	//상품정보*관리자 페이지
+	@GetMapping(value = "item/itemInfo")
+	public String itemInfo() {
+		return "/item/itemInfo";
+	}
 
 }
