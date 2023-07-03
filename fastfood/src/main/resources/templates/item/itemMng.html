@@ -22,12 +22,14 @@
 					<div class="col-md-8">
 						<div class="form_container">
 							<form action="">
-								<table class="table">
+								<table class="table itemMng-table">
 									<thead>
 										<tr>
-											<th scope="col">#</th>
+											<th scope="col">상품번호</th>
 											<th scope="col">상품명</th>
+											<th scope="col">가격</th>
 											<th scope="col">내용</th>
+											<th scope="col">판매상태</th>
 											<th scope="col">등록일자</th>
 										</tr>
 									</thead>
@@ -35,19 +37,18 @@
 										<tr>
 											<th scope="row">1</th>
 											<td><a href="/item/itemInfo" style="color: red">맛있는 피자</a></td>
+											<td>13000원</td>
 											<td>치즈쭉쭉</td>
+											<td>판매중</td>
 											<td>2023/06/29</td>
 										</tr>
 										<tr>
 											<th scope="row">2</th>
-											<td>Jacob</td>
-											<td>Thornton</td>
-											<td>@fat</td>
-										</tr>
-										<tr>
-											<th scope="row">3</th>
-											<td colspan="2">Larry the Bird</td>
-											<td>@twitter</td>
+											<td>햄버거</td>
+											<td>11000원</td>
+											<td>치즈쭉쭉</td>
+											<td>판매중</td>
+											<td>2023/07/03</td>
 										</tr>
 									</tbody>
 								</table>
@@ -67,8 +68,7 @@
 									</nav>
 								</div>
 								<div class="btn_box float-end itemMng-add">
-									<button >상품등록 하러가기</button>
-									</button>
+									<button type="button" onclick="location.href='/item/itemForm'">상품등록 하러가기</button>
 								</div>
 							</form>
 						</div>

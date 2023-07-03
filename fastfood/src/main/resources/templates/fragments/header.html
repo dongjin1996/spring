@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	
 
     <!-- header section strats -->
@@ -23,7 +24,7 @@
 
           <div class="collapse navbar-collapse main-nav" id="navbarSupportedContent">
             <ul class="navbar-nav  mx-auto site-menu">
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown" sec:authorize="hasAnyAuthority('ROLE_ADMIN')">
               <a class="dropbtn nav-link" style="color: white;">관리자 메뉴</a>
               <ul class="dropdown-content">
               	<li class="nav-item"><a class="nav-link" href="/item/itemForm">상품등록</a></li>
@@ -42,18 +43,18 @@
                 <a class="nav-link" href="/member/about" >About <span class="sr-only">(current)</span> </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/member/qa">문의하기</a>
+                <a class="nav-link" href="/member/qa" sec:authorize="isAuthenticated()">문의하기</a>
               </li>
             <li class="nav-item">
-                <a class="nav-link" href="/member/qa">로그아웃</a>
+                <a class="nav-link" href="/member/logout" sec:authorize="isAuthenticated()">로그아웃</a>
               </li>
             </ul>
 
             <div class="user_option">
-              <a href="/member/login" class="user_link">
+              <a href="/member/login" class="user_link" sec:authorize="isAnonymous()">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
-              <a class="cart_link" href="/cart/cartlist">
+              <a class="cart_link" href="/cart/cartlist" sec:authorize="isAuthenticated()">
                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
                   <g>
                     <g>
@@ -122,4 +123,7 @@
     </header>
     <!-- end header section -->
   </div>
+  
+
+
 </html>

@@ -18,8 +18,8 @@
 					<h3 style="margin-left: 200px" class="qa-h3">문의 내용</h3>
 				</div>
 				<div class="row">
-					<div class="col-md-2"></div>
-					<div class="col-md-8">
+					<div class="col-md-0"></div>
+					<div class="col-md-12 qainfo-flex">
 						<div class="form_container">
 							<form action="">
 								<table class="table">
@@ -28,7 +28,7 @@
 											<th class="qaInfo-th" scope="col">글번호</th>
 											<td class= "qaInfo-num">번호</td>
 											<th class="qaInfo-th" scope="col">작성자</th>
-											<td>작성자이름</td>
+											<td>작성자ID</td>
 											<th class="qaInfo-th" scope="col">작성일자</th>
 											<td>2023/06/30</td>
 										</tr>
@@ -54,17 +54,17 @@
 
 								<div class="btn_box float-end itemMng-add">
 								<div style="margin-right: 10px">
-									<button >작성하기</button>
+									<button class="modify-delete" >삭제하기</button>
 								</div>
 								<div>
-									<button th:onclick="location.href='/'">취소</button>
+									<button type="button" onclick="location.href='/member/qaList'">목록</button>
 								</div>
 
 								</div>
 							</form>
 						</div>
 					</div>
-					<div class="col-md-2"></div>
+					<div class="col-md-0"></div>
 				</div>
 			</div>
 		</section>

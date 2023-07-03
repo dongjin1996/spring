@@ -2,70 +2,69 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
-	
-	    <!-- 각 페이지의 CSS가 작성될 위치 -->
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css">
 	<style>
-
-	</style>
+</style>
 </th:block>
 
 <div layout:fragment="content">
-<body class="sub_page">
-	<section class="book_section layout_padding">
-  
-	 <div class="container">
-      <div class="heading_container">
-        <h3 class="qa-h3" style="margin-left: 200px">
-          상품등록
-        </h3>
-      </div>
-      <div class="row">
-      	<div class="col-md-2"></div>
-        <div class="col-md-8">
-          <div class="form_container">
-            <form action="">
-              <div>
-              <label>상품명</label>
-                <input type="text" class="form-control" placeholder="상품명 입력" />
-              </div>
-              <div>
-              <label>가격</label>
-                <input type="text" class="form-control" placeholder="가격 입력" />
-              </div>
-              <div>
-              <label>재고</label>
-                <input type="text" class="form-control" placeholder="재고 입력" />
-              </div>
-              <div>
-              <label>상품 상세내용</label>
-				<textarea rows=10 class="form-control" placeholder="상품 상세내용" id="floatingTextarea" style="height: 100%;"></textarea>
-              </div>
-              <div>
-              <label></label>
-                <input type="file" class="form-control" />
-              </div>
-              <div class="btn_box">
-                <button>
-                  작성완료
-                </button>
-                <button th:onclick="javascript:location.href='/';">
-				취소
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="col-md-2"></div>
-      </div>
-    </div>
-  </section>
-</body>
+	<body class="sub_page">
+		<section class="book_section layout_padding">
+
+			<div class="container">
+				<div class="heading_container">
+					<h3 class="qa-h3" style="margin-left: 200px">상품등록</h3>
+				</div>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<div class="form_container">
+							<form action="">
+								<div>
+									<label class="itemForm-label">상품명</label> <input type="text" class="form-control"
+										placeholder="상품명 입력" />
+								</div>
+								<div>
+									<label class="itemForm-label">가격</label> <input type="text" class="form-control"
+										placeholder="가격 입력" />
+								</div>
+								<div class="itemform-select">
+										<select class="form-select"
+										aria-label="Default select example">
+										<option selected>재고 상태</option>
+										<option value="1">판매중</option>
+										<option value="2">매진</option>
+									</select>
+								</div>
+								<div>
+									<label class="itemForm-label">상품 상세내용</label>
+									<textarea rows=10 class="form-control" placeholder="상품 상세내용"
+										id="floatingTextarea" style="height: 100%;"></textarea>
+								</div>
+								<div>
+									<label></label> <input type="file" class="form-control" />
+								</div>
+								<div class="btn_box">
+									<button>작성완료</button>
+									<button type="button" th:onclick="location.href='/item/itemMng'">취소
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-2"></div>
+				</div>
+			</div>
+		</section>
+	</body>
 </div>
-	
-	  <!-- 각 페이지의 스크립트가 작성될 위치 -->
+
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
+		
 	</script>
 </th:block>
 </html>

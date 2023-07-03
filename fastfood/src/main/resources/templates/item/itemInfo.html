@@ -37,6 +37,7 @@
 										<div class="options">
 											<h6>$20</h6>
 										</div>
+										<div>판매중</div>
 									</div>
 								</div>
 							</div>
@@ -45,10 +46,10 @@
 				</div>
 				<div class="btn_box float-end itemMng-add itemInfo-add ">
 					<div style="margin-right: 10px">
-						<button class=" itemInfo-btn">수정하기</button>
+						<button type="button" class=" itemInfo-btn" onclick="location.href='/item/itemModify'">수정하기</button>
 					</div>
 					<div>
-						<button class=" itemInfo-btn" th:onclick="location.href='/item/itemMng'">취소</button>
+						<button class=" itemInfo-btn" type="button" onclick="location.href='/item/itemMng'">목록으로</button>
 					</div>
 
 				</div>

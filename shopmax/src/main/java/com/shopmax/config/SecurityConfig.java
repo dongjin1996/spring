@@ -21,6 +21,7 @@ public class SecurityConfig {
 				//모든 사용자가 로그인(인증) 없이 접근할 수 있도록 설정
 				.requestMatchers("/css/**", "/js/**", "/img/**", "/images/**", "/fonts/**").permitAll()
 				.requestMatchers("/", "/members/**", "/item/**").permitAll()
+				.requestMatchers("/favicon.ico", "/error").permitAll()
 				.requestMatchers("/admin/**").hasRole("ADMIN")   //'admin'으로 시작하는 경로는 ADMIN만 접근 할수 있도록
 				.anyRequest().authenticated()   //그 외의 페이지는 모두 로그인(인증을 받아야 한다)
 				)     
