@@ -1188,16 +1188,19 @@ a:focus {
 	font-size: 2rem;
     font-weight: 700;
     border-bottom: 1px solid darkgray;
+    text-align: end;
 }
 
 .cart-total_2{
-	padding-top: 20px
+	padding-top: 20px;
+	text-align: end;
 }
 
 
 .cart-total_3{	
     font-weight: bold;
-    font-size: 1.5rem;	
+    font-size: 1.5rem;
+    text-align: end;
 }
 
 .remove {
@@ -1220,6 +1223,38 @@ a:focus {
 	color: red;
 }
 
-.page-item {
-	background-color: orange !important;
+.page-link {
+	background-color: #0D0E10;
+	color: #FFB820;
+}
+
+.page-link:hover {
+	color: #FFB820;
+}
+
+.qa-span {
+	font-family: fantasy;
+	font-size: 15px;
+}
+
+.remove:hover {
+	background-color: #bb0000 !important; 
+}
+
+.cart-item {
+	vertical-align: middle !important;
+}
+
+.img-thumbnail {
+	max-width: 120px
+}
+
+.itemForm-btn-flex {
+	display: flex;
+	justify-content: right;
+	
+}
+
+.itemForm-submit {
+	margin-right: 10px
 }

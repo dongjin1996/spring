@@ -22,7 +22,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @Table (name = "member")
-public class Member {
+public class Member extends BaseEntity{
 	
 	@Id
 	@Column (name = "member_id")
@@ -60,8 +60,8 @@ public class Member {
 		member.setAddress(memberFormDto.getAddress());
 		member.setBirth(memberFormDto.getBirth());
 		member.setPassword(password);
-	//	member.setRole(Role.ADMIN);  //관리자로 가입
-		member.setRole(Role.USER);  //일반유저로 가입
+		member.setRole(Role.ADMIN);  //관리자로 가입
+	//	member.setRole(Role.USER);  //일반유저로 가입
 		
 		return member;
 	}

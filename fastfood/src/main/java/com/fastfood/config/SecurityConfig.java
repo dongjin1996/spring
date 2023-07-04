@@ -21,6 +21,7 @@ public class SecurityConfig {
 				.requestMatchers("/css/**", "/js/**", "/img/**","/images/**","/fonts/**").permitAll()
 				.requestMatchers("/", "/member/**", "/item/**").permitAll()
 				.requestMatchers("/favicon.ico", "/error").permitAll()
+				.requestMatchers("member/qa").hasRole("USER")
 				.requestMatchers("/admin/**").hasRole("ADMIN") //"admin"으로 시작하는 경로는 어드민만 접속가능
 				.anyRequest().authenticated() //그 외의 페이지는 모두 로그인 인증 받아야함
 				)

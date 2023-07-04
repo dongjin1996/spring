@@ -13,25 +13,25 @@ public class ItemController {
 	}
 	
 	//상품등록 페이지
-	@GetMapping(value = "item/itemForm")
+	@GetMapping(value = "/admin/item/itemForm")
 	public String itemForm() {
 		return "/item/itemForm";
 	}
 	
 	//상품관리 페이지
-	@GetMapping(value = "item/itemMng")
+	@GetMapping(value = "/admin/item/itemMng")
 	public String itemMng() {
 		return "/item/itemMng";
 	}
 	
 	//상품수정 페이지
-	@GetMapping(value = "item/itemModify")
+	@GetMapping(value = "/admin/item/itemModify")
 	public String itemModify() {
 		return "/item/itemModify";
 	}
 	
 	//상품정보*관리자 페이지
-	@GetMapping(value = "item/itemInfo")
+	@GetMapping(value = "/admin/item/itemInfo")
 	public String itemInfo() {
 		return "/item/itemInfo";
 	}

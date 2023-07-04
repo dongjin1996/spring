@@ -34,13 +34,13 @@ public class MemberController {
 	}
 	
 	//문의리스트 페이지
-	@GetMapping(value = "/member/qaList")
+	@GetMapping(value = "/admin/member/qaList")
 	public String qaList() {
 		return "member/qaList";
 	}
 	
 	//문의보기 페이지
-	@GetMapping(value = "/member/qaInfo")
+	@GetMapping(value = "/admin/member/qaInfo")
 	public String qaInfo() {
 		return "member/qaInfo";
 	}

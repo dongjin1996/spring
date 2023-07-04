@@ -47,3 +47,6 @@ qainfo,.>>   iteminfo,  cartList장바구니
 
 
 비밀번호 찾기 memberfind.html - 보수
+
+검색기능 
+장바구니
