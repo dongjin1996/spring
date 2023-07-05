@@ -28,7 +28,7 @@ public class MemberController {
 	}
 	
 	//문의하기 페이지
-	@GetMapping(value = "member/qa")
+	@GetMapping(value = "/user/member/qa")
 	public String qa() {
 		return "member/qa";
 	}

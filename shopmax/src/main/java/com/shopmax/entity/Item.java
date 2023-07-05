@@ -39,7 +39,7 @@ public class Item extends BaseEntity{
 	private int stockNumber; //재고수량 - > stock_number
 	
 	@Lob //clob과 같은 큰타입의 문자타입으로 컬럼을 만든다.
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "longtext")
 	private String itemDetail; //상품상세설명 -> item_detail
 	
 	@Enumerated(EnumType.STRING) //enum의 이름을 DB의 저장

@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -30,7 +31,8 @@ public class Qa extends BaseEntity{
 	@Column(nullable = false)
 	private String qaNm;   // 문의이름
 	
-	@Column(nullable = false)
+	@Lob
+	@Column(nullable = false, columnDefinition = "longtext")
 	private String qaContent;  //문의내용
 	
 	private LocalDateTime qaDate; //문의날짜

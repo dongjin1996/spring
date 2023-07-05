@@ -9,6 +9,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,7 +33,8 @@ public class Item extends BaseEntity{
 	@Column(nullable = false)  //가격
 	private int price;
 	
-	@Column(nullable = false)  //상세설명
+	@Lob
+	@Column(nullable = false, columnDefinition = "longtext")  //상세설명
 	private String itemDetail;
 	
 	@Enumerated(EnumType.STRING)

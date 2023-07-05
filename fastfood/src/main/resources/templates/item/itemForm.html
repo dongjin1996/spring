@@ -21,21 +21,26 @@
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
 						<div class="form_container">
-							<form action="">
+							<form action="/admin/item/itemForm" method="post" enctype="multipart/form-data" th:object="${itemFormDto}" name="itemForm">
+							
+							<input type="hidden" th:field="*{id}"/>
+							
 								<div>
-									<label class="itemForm-label">상품명</label> <input type="text" class="form-control"
+									<label class="itemForm-label">상품명</label> 
+									<input type="text" class="form-control"
 										placeholder="상품명 입력" />
 								</div>
 								<div>
-									<label class="itemForm-label">가격</label> <input type="text" class="form-control"
+									<label class="itemForm-label">가격</label> 
+									<input type="text" class="form-control"
 										placeholder="가격 입력" />
 								</div>
 								<div class="itemform-select">
 										<select class="form-select"
-										aria-label="Default select example">
+										aria-label="Default select example" >
 										<option selected>재고 상태</option>
-										<option value="1">판매중</option>
-										<option value="2">매진</option>
+										<option value="SELL">판매중</option>
+										<option value="SOLD_OUT">매진</option>
 									</select>
 								</div>
 								<div>
@@ -44,7 +49,8 @@
 										id="floatingTextarea" style="height: 100%;"></textarea>
 								</div>
 								<div>
-									<label></label> <input type="file" class="form-control" />
+									<label></label> 
+									<input type="file" class="form-control item-form-file" />
 								</div>
 								<div class="btn_box itemForm-btn-flex">
 									<button type="button" class="itemForm-submit">작성완료</button>

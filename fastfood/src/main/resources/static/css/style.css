@@ -1258,3 +1258,7 @@ a:focus {
 .itemForm-submit {
 	margin-right: 10px
 }
+
+.item-form-file {
+	width: 300px !important;
+}
