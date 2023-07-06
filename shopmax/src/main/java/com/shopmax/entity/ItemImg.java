@@ -1,6 +1,5 @@
 package com.shopmax.entity;
 
-import com.shopmax.constant.RepImgYn;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -45,6 +44,7 @@ public class ItemImg extends BaseEntity{
 		this.imgName = imgName;
 		this.imgUrl = imgUrl;
 	}
+	
 	
 	
 }
