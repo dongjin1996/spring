@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
 import com.fastfood.constant.ItemSellStatus;
 import com.fastfood.entity.Item;
 
-public interface ItemRepository extends JpaRepository<Item, Long>{
+public interface ItemRepository extends JpaRepository<Item, Long>, ItemRepositoryCustom{
 	
 	List<Item> findByItemNm(String itemNm);
 	
@@ -34,7 +34,7 @@ public interface ItemRepository extends JpaRepository<Item, Long>{
 	@Query(value = "select * from where item_detail like %:itemDetail% order by price desc", nativeQuery = true)
 	List<Item> findByItemDetailByNative(@Param("itemDetail")String itemDetail);
 	
-	@Query("select i from Itm i where i.price >= :price")
+	@Query("select i from Item i where i.price >= :price")
 	List<Item> findByPrice(@Param("price") int price);
 	
 	@Query("select i from Item i where i.itemNm = :itemNm and i.itemSellStatus = :sell")
