@@ -20,7 +20,6 @@ import com.shopmax.dto.ItemSearchDto;
 import com.shopmax.entity.Item;
 import com.shopmax.service.ItemService;
 
-import groovy.lang.Binding;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -34,6 +33,13 @@ public class ItemController {
 	@GetMapping(value = "/item/shop")
 	public String itemShopList() {
 		return "/item/itemShopList";
+	}
+	
+	@GetMapping(value = "/item/{itemId}")
+	public String itemDtl(Model model, @PathVariable("itemId") Long itemId) {
+		ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
+		model.addAttribute("item", itemFormDto);
+		return "item/itemDtl";
 	}
 	
 	//상품등록 페이지
