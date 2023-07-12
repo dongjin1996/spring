@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.thymeleaf.util.StringUtils;
 
 import com.fastfood.constant.ItemSellStatus;
+import com.fastfood.dto.ItemSearchDto;
 import com.fastfood.entity.Item;
 import com.fastfood.entity.QItem;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -59,7 +60,7 @@ private JPAQueryFactory queryFactory;
 	}
 	
 	@Override
-	public Page<com.fastfood.entity.Item> getAdminItemPage(com.fastfood.dto.ItemSearchDto itemSearchDto, Pageable pageable) {
+	public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable) {
 		
 		/*//select * from item where reg_item =? and item_sell_status and item_nm like &검색어&
 			order by item_id desc; */
@@ -83,5 +84,10 @@ private JPAQueryFactory queryFactory;
 				.fetchOne();
 		
 		return new PageImpl<>(content, pageable, total);
+	}
+	
+	private BooleanExpression itemNmLike(String searchQuery) {
+		return StringUtils.isEmpty(searchQuery) ?
+				null : QItem.item.itemNm.like("%" + searchQuery + "%");
 	}
 }

@@ -3,6 +3,11 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
 
+<head>
+	<meta name="_csrf" th:content="${_csrf.token}" />
+	<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
+
 <!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css">
 	<style>
@@ -26,16 +31,17 @@
 					<div class=" itemInfo-main">
 						<div class=" all pizza itemInfo-main_info">
 							<div class="box">
+							<input type="hidden" id="itemId" th:value="${item.id}">
 								<div>
 									<div class="img-box">
-										<img src="/images/f1.png" alt="">
+										<img th:src="${item.itemImgDtoList[0].imgUrl}" th:alt="${item.itemNm}">
 									</div>
 									<div class="detail-box">
-										<h5>Delicious Pizza</h5>
-										<p>Veniam debitis quaerat officiis quasi cupiditate quo,
-											quisquam velit, magnam voluptatem repellendus sed eaque</p>
+										<h5 th:text="${item.itemNm}"></h5>
+										<p th:text="${item.itemDetail}"></p>
 										<div class="options">
-											<h6>$20</h6>
+											<input type="hidden" th:value="${item.price}" id="price" name="price">
+											<h6 th:text="|${#numbers.formatInteger(item.price, 0, 'COMMA')}원|"></h6>
 										</div>
 										<div>판매중</div>
 									</div>
@@ -46,10 +52,10 @@
 				</div>
 				<div class="btn_box float-end itemMng-add itemInfo-add ">
 					<div style="margin-right: 10px">
-						<button type="button" class=" itemInfo-btn" onclick="location.href='/admin/item/itemModify'">수정하기</button>
+						<button type="button" class=" itemInfo-btn" onclick="location.href='/admin/item/+ ${item.id}'">수정하기</button>
 					</div>
 					<div>
-						<button class=" itemInfo-btn" type="button" onclick="location.href='/admin/item/itemMng'">목록으로</button>
+						<button class=" itemInfo-btn" type="button" onclick="location.href='/admin/items'">목록으로</button>
 					</div>
 
 				</div>

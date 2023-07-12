@@ -21,7 +21,7 @@
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
 						<div class="form_container">
-							<form action="">
+							<form th:action="@{'/admin/items/' + ${items.number}}" method="GET" th:object="${items}">
 								<table class="table itemMng-table">
 									<thead>
 										<tr>
@@ -34,21 +34,13 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<th scope="row">1</th>
-											<td><a href="/admin/item/itemInfo" style="color: red">맛있는 피자</a></td>
-											<td>13000원</td>
+										<tr th:each="item, status: ${items.getContent()}">
+											<th th:text="${item.id}" scope="row">1</th>
+											<td><a th:href="'/item/' + ${item.id}" th:text="${item.itemNm}" style="color: red">맛있는 피자</a></td>
+											<td th:text="${item.price}">13000원</td>
 											<td>치즈쭉쭉</td>
-											<td>판매중</td>
-											<td>2023/06/29</td>
-										</tr>
-										<tr>
-											<th scope="row">2</th>
-											<td>햄버거</td>
-											<td>11000원</td>
-											<td>치즈쭉쭉</td>
-											<td>판매중</td>
-											<td>2023/07/03</td>
+											<td th:text="${item.itemSellStatus}">판매중</td>
+											<td th:text="${item.regTime}">2023/06/29</td>
 										</tr>
 									</tbody>
 								</table>
@@ -68,7 +60,7 @@
 									</nav>
 								</div>
 								<div class="btn_box float-end itemMng-add">
-									<button type="button" onclick="location.href='/admin/item/itemForm'">상품등록 하러가기</button>
+									<button type="button" onclick="location.href='/admin/item/new'">상품등록 하러가기</button>
 								</div>
 							</form>
 						</div>

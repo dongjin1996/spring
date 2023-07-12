@@ -7,14 +7,14 @@
 	<meta name="_csrf" th:content="${_csrf.token}" />
 	<meta name="_csrf_header" th:content="${_csrf.headerName}" />
 </head>
-
+	
 <th:block layout:fragment="css">
 	<style>
 	</style>
 </th:block>
 
 <div layout:fragment="content">
-		<div class="bg-light py-3">
+	<div class="bg-light py-3">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 mb-0">
@@ -28,24 +28,24 @@
 	<div class="site-section">
 		<div class="container">
 			<div class="row">
-				<input type="hidden" id="itemId" th:value= "${item.id}">
+				<input type="hidden" id="itemId" th:value="${item.id}">
 			
 				<div class="col-md-6">
 					<div class="item-entry">
 						<a href="#" class="product-item md-height bg-gray d-block"> 
-						<img 
-						class="rounded repImg" th:src="${item.itemImgDtoList[0].imgUrl}" th:alt="${item.itemNm}" >
+						<img th:src="${item.itemImgDtoList[0].imgUrl}" 
+						class="rounded repImg" th:alt="${item.itemNm}">
 						</a>
 
 					</div>
 
 				</div>
 				<div class="col-md-6">
-					<span th:text="${item.itemSellStatus}" class="badge badge-primary mgb-15" ></span> 
-					<h2 th:text="${item.itemNm}" class="text-black" ></h2>
+					<span th:text="${item.itemSellStatus}" class="badge badge-primary mgb-15"></span> 
+					<h2 class="text-black" th:text="${item.itemNm}"></h2>
 					
 					<p>
-						<input type="hidden" id="price" name="price" th:value="${item.price}">
+						<input type="hidden" th:value="${item.price}" id="price" name="price">
 						<strong class="text-primary h4" th:text="|${#numbers.formatInteger(item.price, 0, 'COMMA')}원|"></strong>
 					</p>
 					
@@ -75,7 +75,7 @@
 						<button type="button" class="btn btn-primary btn-lg"
 						onclick="order()">주문하기</button>
 					</p>
-					<p th:unless="${#strings.equals(item.itemSellStatus, 'SOLD_OUT')}">
+					<p th:unless="${#strings.equals(item.itemSellStatus, 'SELL')}">
 						해당 상품은 현재 품절입니다.
 					</p>
 
@@ -100,23 +100,22 @@
 				<div class="col-md-12">
 					<div th:each="itemImg : ${item.itemImgDtoList}" class="text-center">
 						<img th:if="${not #strings.isEmpty(itemImg.imgUrl)}"
-						th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="800">
-							
+							th:src="${itemImg.imgUrl}" class="rounded mgb-15" width="800">
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
 </div>
 
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
-		$(document).ready(function(){
-			calculateTotalPrice(); //처음 상세페이지 화면에 들어올대 총 상품금액이 보여야 하므로 넣어준다.
+		$(document).ready(function() {
+			//처음 상세페이지 화면에 들어올때 총 상품금액이 보여야 하므로
+			calculateTotalPrice(); 
 			
-			//수량 -, + 버튼 누를때마다 총가격을 구한다.
-			$(".count_btn").click(function(){
+			//수량 -, + 버튼을 누를때마다 총가격을 구한다
+			$(".count_btn").click(function() {
 				calculateTotalPrice();
 			})
 		});
@@ -124,33 +123,33 @@
 		function calculateTotalPrice() {
 			var count = $("#count").val(); //수량
 			var price = $("#price").val(); //가격
-			var totalPrice = (price * count).toLocaleString('ko-KR'); // 천단위 콤마
+			var totalPrice = (price * count).toLocaleString('ko-KR'); //천단위 콤마
 			$("#totalPrice").html(totalPrice + '원'); //총가격 출력
 		}
 		
 		function order() {
 			var token = $("meta[name='_csrf']").attr("content");
-			var header = $("meta[name='_csrf_header']").attr("content"); 
+			var header = $("meta[name='_csrf_header']").attr("content");
 			
 			var url = "/order";
 			
-			//controller(서버)에 전달한 데이터
+			//controller(서버)에 전달할 데이터
 			var paramData = {
-					itemId : $("#itemId").val(), //item_id
-					count: $("#count").val() 	//수량
+					itemId : $("#itemId").val(), //item의 id
+					count: $("#count").val() //수량
 			}
 			
-			//★전달하기 전에 데이터를 JSON ->문자열로 만들어야 한다.
+			//★전달하기 전에 데이터를 반드시 JSON -> 문자열로 만들어야 한다.
 			var param = JSON.stringify(paramData);
 			
 			$.ajax({
-				url : url,  //변수를 써도 되고 경로 써도 됨  //request URL
-				type : "POST",  //전송방식
+				url : url, //request URL
+				type : "POST", //전송방식
 				contentType : "application/json",
 				data : param, //서버에 전송할 데이터
 				beforeSend : function(xhr) {
-					//데이터를 전송하기전에 헤더에 csrf값을 설정해준다.
-					xhr.setRequestHeader(header, token); // 
+					//데이터를 전송하기전에 헤더에 csrf 값을 설정
+					xhr.setRequestHeader(header, token);
 				},
 				dataType : "json",
 				cache : false,
@@ -160,17 +159,16 @@
 				},
 				error : function(jqXHR, status, error) {
 					if (jqXHR.status == '401') {
-						alert('로그인 후 이용해주세요.')
+						alert('로그인 후 이용해주세요.');
 						location.href = '/members/login';
 					} else {
-						//에러메시지 출력(ResponseEntity에서 받아온 값을 출력해준다.)
-						alert(jqXHR.responseText);
+						//에러메세지 출력(ResponseEntity에서 받아온 값을 출력해준다)
+						alert(jqXHR.responseText); 
 					}
 				}
 			});
 			
 		}
-		
 	</script>
 </th:block>
 

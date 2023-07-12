@@ -14,10 +14,11 @@ import lombok.Setter;
 @Setter
 public class OrderHistDto {
 	
-	//엔티티를 DTO로 변환
+	//entity -> Dto로 변환
 	public OrderHistDto(Order order) {
 		this.orderId = order.getId();
-		this.orderDate = order.getOrderDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+		this.orderDate = order.getOrderDate()
+				.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 		this.orderStatus = order.getOrderStatus();
 	}
 	
@@ -27,10 +28,9 @@ public class OrderHistDto {
 	
 	private OrderStatus orderStatus; //주문상태
 	
-	private List<OrderItemDto> orderItemDtoList = new ArrayList<>();
+	private List<OrderItemDto> orderItemDtoList = new ArrayList<>(); //주문 상품 리스트
 	
-	//orderItemDto 객체를 주문 상품 리스트에 추가하는 메소드
-	
+	//orderItemDto객체를 주문 상품 리스트에 추가하는 메소드
 	public void addOrderItemDto(OrderItemDto orderItemDto) {
 		this.orderItemDtoList.add(orderItemDto);
 	}
