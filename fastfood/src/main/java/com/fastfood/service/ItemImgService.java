@@ -35,7 +35,7 @@ public class ItemImgService {
 		if(!StringUtils.isEmpty(oriImgName)) {
 			//oriImgName이 빈문자열이 아니라면 이미지 파일 업로드
 			imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
-			imgUrl = "/images/item" + imgName;
+			imgUrl = "/images/menu/" + imgName;
 		}
 		
 		//2.item_img 테이블에 저장
@@ -59,7 +59,7 @@ public class ItemImgService {
 			//수정된 이미지 파일 업로드 C:/fastfood/menu에 업로드
 			String oriImgName = itemImgFile.getOriginalFilename();
 			String imgName = fileService.uploadFile(itemImgLocation, oriImgName, itemImgFile.getBytes());
-			String imgUrl = "/images/item/" + imgName;
+			String imgUrl = "/images/menu/" + imgName;
 			
 			//update 쿼리문 실행
 			/*한번 insert를 진행하면 엔티티가 영속성 컨텍스트에 저장이 되므로 

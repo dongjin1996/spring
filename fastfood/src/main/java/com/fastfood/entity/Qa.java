@@ -2,6 +2,8 @@ package com.fastfood.entity;
 
 import java.time.LocalDateTime;
 
+import com.fastfood.dto.QaFormDto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -40,4 +42,11 @@ public class Qa extends BaseEntity{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
 	private Member member;
+	
+	//qa 엔티티 수정
+	public void updateQa(QaFormDto qaFormDto) {
+		this.qaNm = qaFormDto.getQaNm();
+		this.qaContent = qaFormDto.getQaContent();
+		this.qaDate = qaFormDto.getQaDate();
+	}
 }

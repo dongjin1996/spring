@@ -15,11 +15,11 @@
 
 			<div class="container">
 				<div class="heading_container">
-					<h3 class="qa-h3" style="margin-left: 200px">상품관리</h3>
+					<h3 class="qa-h3" style="margin-left: 50px">상품관리</h3>
 				</div>
 				<div class="row">
-					<div class="col-md-2"></div>
-					<div class="col-md-8">
+					<div class="col-md-"></div>
+					<div class="col-md-12">
 						<div class="form_container">
 							<form th:action="@{'/admin/items/' + ${items.number}}" method="GET" th:object="${items}">
 								<table class="table itemMng-table">
@@ -28,7 +28,6 @@
 											<th scope="col">상품번호</th>
 											<th scope="col">상품명</th>
 											<th scope="col">가격</th>
-											<th scope="col">내용</th>
 											<th scope="col">판매상태</th>
 											<th scope="col">등록일자</th>
 										</tr>
@@ -38,29 +37,71 @@
 											<th th:text="${item.id}" scope="row">1</th>
 											<td><a th:href="'/item/' + ${item.id}" th:text="${item.itemNm}" style="color: red">맛있는 피자</a></td>
 											<td th:text="${item.price}">13000원</td>
-											<td>치즈쭉쭉</td>
 											<td th:text="${item.itemSellStatus}">판매중</td>
 											<td th:text="${item.regTime}">2023/06/29</td>
 										</tr>
 									</tbody>
 								</table>
-								<div>
-									<nav aria-label="Page navigation example">
-										<ul class="pagination itemMng-page">
-											<li class="page-item"><a class="page-link" href="#"
-												aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-											</a></li>
-											<li class="page-item"><a class="page-link" href="#">1</a></li>
-											<li class="page-item"><a class="page-link" href="#">2</a></li>
-											<li class="page-item"><a class="page-link" href="#">3</a></li>
-											<li class="page-item"><a class="page-link" href="#"
-												aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-											</a></li>
-										</ul>
-									</nav>
+							<div>
+					<nav
+					th:with="start=${(items.number/maxPage)*maxPage + 1}
+			                 ,end=(${(items.totalPages == 0) ? 1 : (start + (maxPage - 1) < items.totalPages ? start + (maxPage - 1) : items.totalPages)})"
+							aria-label="Page navigation example">
+							<ul class="pagination d-flex justify-content-center">
+								<li class="page-item" th:classappend="${items.first}?'disabled'">
+									<a class="page-link"
+									th:onclick="'javascript:page(' + ${items.number - 1} +')'">이전</a>
+								</li>
+								
+								<li class="page-item"
+									th:each="page: ${#numbers.sequence(start, end)}"
+									th:classappend="${items.number eq page-1}?'active':''">
+									<a
+									class="page-link" th:inline="text"
+									th:onclick="'javascript:page(' + ${page - 1} +')'">[[${page}]]</a>
+								</li>
+								
+								<li class="page-item" th:classappend="${items.last}?'disabled'">
+									<a class="page-link"
+									th:onclick="'javascript:page(' + ${items.number + 1} +')'">다음</a>
+								</li>
+							</ul>
+						</nav>
 								</div>
+								
+								<div class="row" th:object="${itemSearchDto}" style="height: 30px">
+									<div class="col-lg-2"></div>
+									<div class="col-lg-8" style="display: flex">
+										<!--상품 등록일  -->
+										<select th:field="*{searchDateType}" class="form-control">
+											<option value="all">전체기간</option>
+											<option value="1d">1일</option>
+											<option value="1w">1주</option>
+											<option value="1m">1개월</option>
+											<option value="6m">6개월</option>
+										</select>
+										<!--상품판매 상태  -->
+										<select th:field="*{searchSellStatus}" class="form-control">
+											<option value="">판매상태(전체)</option>
+											<option value="SELL">판매중</option>
+											<option value="SOLD_OUT">품절</option>
+										</select>
+										
+										<!--상품명, 등록자 선택  -->
+										<select th:field="*{searchBy}" class="form-control">
+											<option value="itemNm">상품명</option>
+										</select>
+										<div style="display: flex;">
+											<input type="text" class="form-control" th:field="*{searchQuery}"
+											placeholder="검색어 입력">
+											<button id="searchBtn" type="submit" class="btn btn-primary mb-3">검색</button>
+										</div>
+									</div>
+									<div class="col-lg-2"></div>
+								</div>
+								
 								<div class="btn_box float-end itemMng-add">
-									<button type="button" onclick="location.href='/admin/item/new'">상품등록 하러가기</button>
+									<button  type="button" onclick="location.href='/admin/item/new'">상품 등록하기</button>
 								</div>
 							</form>
 						</div>
@@ -75,7 +116,28 @@
 <!-- 각 페이지의 스크립트가 작성될 위치 -->
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
+		$(document).ready(function(){
+			
+			$("#searchBtn").on("click", function(e){
+				e.preventDefault(); //submit되는걸 방지
+				page(0);
+			});
+		});
 		
+		//페이징버튼 눌렀을때 혹은 검색버튼 눌렀을때 검색어와 selelctbox를 get방식으로 주소이동시켜준다.
+		function page(page) {
+			var searchDateType = $("#searchDateType").val();
+			var searchSellStatus = $("#searchSellStatus").val();
+			var searchBy = $("#searchBy").val();
+			var searchQuery = $("#searchQuery").val();
+			
+			//주소이동
+			location.href = "/admin/items/" + page
+						  + "?searchDateType=" + searchDateType
+						  + "&searchSellStatus=" + searchSellStatus
+						  + "&searchBy=" + searchBy
+						  + "&searchQuery=" + searchQuery;
+		}
 	</script>
 </th:block>
 </html>

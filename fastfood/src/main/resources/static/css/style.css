@@ -1073,6 +1073,7 @@ a:focus {
 .itemMng-add {
 	display: flex;
 	justify-content: flex-end;
+	margin-top: 50px;
 }
 
 
@@ -1100,7 +1101,7 @@ a:focus {
 } 
 
 .qaInfo-num {
-	width: 200px
+	
 }
 
 .qaInfo-tr_th {
@@ -1150,7 +1151,6 @@ a:focus {
 }
 
 .itemInfo-add {
-	padding-top: 50px;
     margin-right: 70px
 }
 
@@ -1224,12 +1224,17 @@ a:focus {
 }
 
 .page-link {
-	background-color: #0D0E10;
-	color: #FFB820;
+	/*  background-color: #0D0E10;
+	color: #FFB820; */
+	cursor: pointer;
 }
 
 .page-link:hover {
-	color: #FFB820;
+
+}
+
+.qa-write {
+	font-weight: bold;
 }
 
 .qa-span {
@@ -1262,3 +1267,12 @@ a:focus {
 .item-form-file {
 	width: 300px !important;
 }
+
+.Login-email {
+	padding-left: 10px;
+}
+
+.itemMenu-page {
+	padding-top: 80px;
+}
+

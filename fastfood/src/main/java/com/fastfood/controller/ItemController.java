@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fastfood.dto.ItemFormDto;
 import com.fastfood.dto.ItemSearchDto;
+import com.fastfood.dto.MainItemDto;
 import com.fastfood.entity.Item;
 import com.fastfood.service.ItemService;
 
@@ -30,9 +31,17 @@ public class ItemController {
 	
 	private final ItemService itemService;
 	
-	//메뉴 페이지
+	//메뉴 전체 리스트
 	@GetMapping (value = "item/menu")
-	public String itemMenu() {
+	public String itemMenu(Model model, ItemSearchDto itemSearchDto,
+			Optional<Integer> page) {
+		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 6);
+		Page<MainItemDto> items = itemService.getMainItemPage(itemSearchDto, pageable);
+		
+		model.addAttribute("items", items);
+		model.addAttribute("itemSearchDto", itemSearchDto);
+		model.addAttribute("maxPage", 5);
+		
 		return "/item/itemMenu";
 	}
 	

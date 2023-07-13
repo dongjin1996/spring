@@ -5,11 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fastfood.dto.MemberFormDto;
+import com.fastfood.dto.QaFormDto;
 import com.fastfood.entity.Member;
 import com.fastfood.service.MemberService;
+import com.fastfood.service.QaService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,6 +23,7 @@ public class MemberController {
 	
 	private final MemberService memberService;
 	private final PasswordEncoder passwordEncoder;
+	private final QaService qaService;
 	
 	//어바웃 페이지
 	@GetMapping(value = "member/about")
@@ -29,9 +33,39 @@ public class MemberController {
 	
 	//문의하기 페이지
 	@GetMapping(value = "/user/member/qa")
-	public String qa() {
+	public String qaForm(Model model) {
+		model.addAttribute("qaFormDto", new QaFormDto());
 		return "member/qa";
 	}
+	
+	//문의 등록 (insert)
+	@PostMapping(value = "/user/member/qa")
+	public String qaNew(@Valid QaFormDto qaFormDto, BindingResult bindingResult,
+			Model model) {
+		
+		if(bindingResult.hasErrors()) {
+			return "member/qa";
+		}
+		
+		try {
+			qaService.saveQa(qaFormDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("errorMessage", "문의등록 중 에러가 발생했습니다.");
+			return "member/qa";
+		}
+		
+		return "redirect:/";
+	}
+	
+	//문의보기 페이지
+	@GetMapping(value = "/admin/qa/{qaId}")
+	public String qaInfo(Model model, @PathVariable("qaId") Long qaId) {
+		QaFormDto qaFormDto = qaService.getQaDtl(qaId);
+		model.addAttribute("qa", qaFormDto);
+		return "member/qaInfo";
+	}
+	
 	
 	//문의리스트 페이지
 	@GetMapping(value = "/admin/member/qaList")
@@ -39,11 +73,7 @@ public class MemberController {
 		return "member/qaList";
 	}
 	
-	//문의보기 페이지
-	@GetMapping(value = "/admin/member/qaInfo")
-	public String qaInfo() {
-		return "member/qaInfo";
-	}
+
 	
 	//로그인 페이지
 	@GetMapping(value = "/member/login")

@@ -22,7 +22,7 @@
 			<form action="">
 				<div class="heading_container heading_center">
 
-					<h3 class="qa-h3">상품정보페이지</h3>
+					<h3 class="qa-h3">메뉴정보</h3>
 
 				</div>
 
@@ -52,7 +52,7 @@
 				</div>
 				<div class="btn_box float-end itemMng-add itemInfo-add ">
 					<div style="margin-right: 10px">
-						<button type="button" class=" itemInfo-btn" onclick="location.href='/admin/item/+ ${item.id}'">수정하기</button>
+						<button type="button" class=" itemInfo-btn" onclick="location.href='/admin/item/' + ${itemFormDto.id}">수정하기</button>
 					</div>
 					<div>
 						<button class=" itemInfo-btn" type="button" onclick="location.href='/admin/items'">목록으로</button>
