@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.fastfood.entity.Qa;
 
-public interface QaRepository extends JpaRepository<Qa, Long>{
+public interface QaRepository extends JpaRepository<Qa, Long>, QaRepositoryCustom{
 	
 	List<Qa> findByQaNm(String qaNm);
 	
@@ -19,6 +19,11 @@ public interface QaRepository extends JpaRepository<Qa, Long>{
 	
 	List<Qa> findByQaNmOrQaContent(String qaNm, String qaContent);
 	
+	
 	@Query("select i from Qa i where i.qaContent like %:qaContent%")
 	List<Qa> findByQaContent(@Param("qaContent") String qaContent);
+	
+	//@Query("select i from Qa i where i.createBy like %:createBy%")
+	//List<Qa> findByCreateBy(@Param("createBy") String createBy);
+	
 }

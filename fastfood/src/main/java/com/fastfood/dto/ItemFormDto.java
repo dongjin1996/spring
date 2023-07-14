@@ -1,5 +1,6 @@
 package com.fastfood.dto;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +30,8 @@ public class ItemFormDto {
 	
 	
 	private ItemSellStatus itemSellStatus;
+	
+	private LocalDateTime regTime;
 	
 	//상품 이미지 정보를 저장
 	private List<ItemImgDto> itemImgDtoList = new ArrayList<>();

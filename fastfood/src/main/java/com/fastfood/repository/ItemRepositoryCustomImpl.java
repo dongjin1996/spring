@@ -1,5 +1,6 @@
 package com.fastfood.repository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -112,7 +113,8 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
 							item.itemNm,
 							item.itemDetail,
 							itemImg.imgUrl,
-							item.price)							
+							item.price)
+
 						)
 						.from(itemImg)
 						.join(itemImg.item, item)

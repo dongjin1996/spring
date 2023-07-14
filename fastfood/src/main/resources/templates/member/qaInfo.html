@@ -28,20 +28,20 @@
 						<div class="form_container">
 							<form action="">
 								<input type="hidden" id="qaId" th:value="${qa.id}">
-								<table class="table">
+								<table class="table table-hover">
 									<thead>
 										<tr class="qaInfo-tr">
-											<th class="qaInfo-th" scope="col" >글번호</th>
-											<td class="qaInfo-num" th:text="${qa.id}">번호</td>
-											<th class="qaInfo-th" scope="col">작성자</th>
-											<td th:text="${qa.createBy}">작성자ID</td>
-											<th class="qaInfo-th" scope="col">작성일자</th>
-											<td th:text="${qa.regTime}">2023/06/30</td>
+											<th  class="qaInfo-th" scope="col" >글번호 :</th>
+											<td scope="col" class="qaInfo-num" th:text="${qa.id}">번호</td>
+											<th  class="qaInfo-th" scope="col">작성자 :</th>
+											<td scope="col" th:text="${qa.createBy}">작성자ID</td>
+											<th  class="qaInfo-th" scope="col">작성일자 :</th>
+											<td scope="col" th:text="${qa.regTime}">2023/06/30</td>
 										</tr>
 									</thead>
 									<tbody>
 										<tr class="qaInfo-tr">
-											<th scope="row">제목</th>
+											<th scope="row">제목 :</th>
 											<td th:text="${qa.qaNm}">제목목</td>
 
 										</tr>
@@ -63,7 +63,7 @@
 									</div>
 									<div>
 										<button type="button"
-											onclick="location.href='/admin/member/qaList'">목록</button>
+											onclick="location.href='/admin/qaList'">목록</button>
 									</div>
 
 								</div>

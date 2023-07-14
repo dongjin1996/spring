@@ -41,6 +41,7 @@ public class Item extends BaseEntity{
 	@Enumerated(EnumType.STRING)
 	private ItemSellStatus itemSellStatus;   //SELL , SOLD_OUT
 	
+	
 	//item 엔티티 수정
 	public void updateItem(ItemFormDto itemFormDto) {
 		this.itemNm = itemFormDto.getItemNm();

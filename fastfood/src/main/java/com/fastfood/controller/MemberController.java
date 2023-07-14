@@ -1,5 +1,10 @@
 package com.fastfood.controller;
 
+import java.util.Optional;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fastfood.dto.MemberFormDto;
 import com.fastfood.dto.QaFormDto;
+import com.fastfood.dto.QaSearchDto;
 import com.fastfood.entity.Member;
+import com.fastfood.entity.Qa;
 import com.fastfood.service.MemberService;
 import com.fastfood.service.QaService;
 
@@ -68,8 +75,18 @@ public class MemberController {
 	
 	
 	//문의리스트 페이지
-	@GetMapping(value = "/admin/member/qaList")
-	public String qaList() {
+	@GetMapping(value = {"/admin/qaList", "/admin/qaList/{page}"})
+	public String qaList(QaSearchDto qaSearchDto,
+				@PathVariable("page") Optional<Integer> page, Model model) {
+		
+		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 5);
+		
+		Page<Qa> qas = qaService.getAdminQaPage(qaSearchDto, pageable);
+		
+		model.addAttribute("qas", qas);
+		model.addAttribute("qaSearchDto", qaSearchDto);
+		model.addAttribute("maxPage", 5);
+		
 		return "member/qaList";
 	}
 	

@@ -43,7 +43,8 @@
 											<input type="hidden" th:value="${item.price}" id="price" name="price">
 											<h6 th:text="|${#numbers.formatInteger(item.price, 0, 'COMMA')}원|"></h6>
 										</div>
-										<div>판매중</div>
+										<div th:text="${item.regTime}">등록일자</div>
+										<div th:text="${item.itemSellStatus}">판매중</div>
 									</div>
 								</div>
 							</div>
@@ -52,7 +53,8 @@
 				</div>
 				<div class="btn_box float-end itemMng-add itemInfo-add ">
 					<div style="margin-right: 10px">
-						<button type="button" class=" itemInfo-btn" onclick="location.href='/admin/item/' + ${itemFormDto.id}">수정하기</button>
+						<!-- <button type="button" class=" itemInfo-btn" th:onclick="javascript:location.href='/admin/item/' + ${item.id};">수정하기</button> -->
+						<a class="iteminfo-modify" th:href="'/admin/item/' + ${item.id}">수정하기</a>
 					</div>
 					<div>
 						<button class=" itemInfo-btn" type="button" onclick="location.href='/admin/items'">목록으로</button>
