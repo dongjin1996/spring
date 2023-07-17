@@ -2,6 +2,7 @@ package com.fastfood.entity;
 
 import com.fastfood.constant.ItemSellStatus;
 import com.fastfood.dto.ItemFormDto;
+import com.fastfood.exception.OutOfStockException;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,6 +35,9 @@ public class Item extends BaseEntity{
 	@Column(nullable = false)  //가격
 	private int price;
 	
+	@Column(nullable = false)
+	private int stockNumber; //재고수량
+	
 	@Lob
 	@Column(nullable = false, columnDefinition = "longtext")  //상세설명
 	private String itemDetail;
@@ -48,5 +52,21 @@ public class Item extends BaseEntity{
 		this.price = itemFormDto.getPrice();
 		this.itemDetail = itemFormDto.getItemDetail();
 		this.itemSellStatus = itemFormDto.getItemSellStatus();
+	}
+	
+	//재고를 감소시킨다.
+	public void removeStock(int stockNumber) {
+		int restStock = this.stockNumber - stockNumber; //남은 재고 수량
+		
+		if(restStock < 0 ) {
+			throw new OutOfStockException("상품의 재고가 부족합니다." + "현재 재고수량:" + this.stockNumber);
+		}
+		
+		this.stockNumber = restStock; //남은 재고 수량 반영
+	}
+	
+	//재고 증가
+	public void addStock(int stockNumber) {
+		this.stockNumber += stockNumber;
 	}
 }

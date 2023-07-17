@@ -44,6 +44,7 @@
 											<h6 th:text="|${#numbers.formatInteger(item.price, 0, 'COMMA')}원|"></h6>
 										</div>
 										<div th:text="${item.regTime}">등록일자</div>
+										<div th:text="|남은수량: ${item.stockNumber}|">재고</div>
 										<div th:text="${item.itemSellStatus}">판매중</div>
 									</div>
 								</div>

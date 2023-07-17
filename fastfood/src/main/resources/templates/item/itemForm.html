@@ -6,6 +6,10 @@
 <!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css">
 	<style>
+	.fieldError {
+		color: red;
+	}
+	
 </style>
 </th:block>
 
@@ -36,6 +40,11 @@
 									<input type="text" class="form-control"
 										placeholder="가격 입력" th:field="*{price}" onkeyup="inputNumberFormat(this)" />
 									<p th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="fieldError">Incorrect Data</p>
+								</div>
+								<div>
+									<label class="itemForm-label" th:for="stockNumber">재고</label>
+									<input type="text" class="form-control" placeholder="재고입력" th:field="*{stockNumber}">
+									<p th:if="${#fields.hasErrors('stockNumber')}" th:errors="*{stockNumber}" class="fieldError">Incorrect Data</p>
 								</div>
 								<div class="itemform-select">
 										<select class="form-select"

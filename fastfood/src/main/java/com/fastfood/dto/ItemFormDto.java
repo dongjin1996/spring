@@ -28,6 +28,8 @@ public class ItemFormDto {
 	@NotBlank(message = "상품 상세설명은 필수 입력입니다.")
 	private String itemDetail;
 	
+	@NotNull (message= "재고는 필수 입력입니다.")
+	private int stockNumber;
 	
 	private ItemSellStatus itemSellStatus;
 	

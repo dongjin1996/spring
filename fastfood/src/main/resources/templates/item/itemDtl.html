@@ -2,20 +2,158 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
-	
-	    <!-- 각 페이지의 CSS가 작성될 위치 -->
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css">
 	<style>
+</style>
+</th:block>
 
-	</style>
+
+
+<head>
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+
+<!-- 각 페이지의 CSS가 작성될 위치 -->
+<th:block layout:fragment="css">
+	<style>
+</style>
 </th:block>
 
 <div layout:fragment="content">
+	<body class="sub_page">
+
+		<section class="food_section layout_padding">
+			<div class="container">
+				<form action="">
+					<div class="heading_container heading_center">
+
+						<h3 class="qa-h3">메뉴 상세</h3>
+
+					</div>
+
+
+					<div class="filters-content">
+						<div class=" itemInfo-main">
+							<div class=" all pizza itemInfo-main_info">
+								<div class="box">
+									<input type="hidden" id="itemId" th:value="${item.id}">
+									<div>
+										<div class="img-box">
+											<img th:src="${item.itemImgDtoList[0].imgUrl}"
+												th:alt="${item.itemNm}">
+										</div>
+										<div class="detail-box">
+											<h5 th:text="${item.itemNm}"></h5>
+											<p th:text="${item.itemDetail}"></p>
+											<div class="options">
+												<input type="hidden" th:value="${item.price}" id="price"
+													name="price">
+												<h6
+													th:text="|${#numbers.formatInteger(item.price, 0, 'COMMA')}원|"></h6>
+											</div>
+											<div class="input-group">
+											<div class="input-group-prepend">
+												<button class="js-btn-minus count_btn" type="button">&minus;</button>
+											</div>
+											<input type="text" class="form-control" value="1"
+												placeholder="" name="count" id="count" style="width: 80px;">
+											<div>
+												<button class="js-btn-plus count_btn" type="button">&plus;</button>
+											</div>
+											
+											</div>
+											<div th:text="${item.itemSellStatus}">판매중</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="btn_box float-end itemMng-add itemInfo-add ">
+						<div style="margin-right: 10px">
+							<button type="button" class=" itemInfo-btn" onclick="order()">주문하기</button>
+
+						</div>
+						<div>
+							<button class=" itemInfo-btn" type="button"
+								onclick="location.href='/item/menu'">목록으로</button>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</section>
+
+	</body>
 </div>
-	
-	  <!-- 각 페이지의 스크립트가 작성될 위치 -->
+
+<!-- 각 페이지의 스크립트가 작성될 위치 -->
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
+		$(document).ready(function() {
+			//처음 상세페이지 화면에 들어올때 총 상품금액이 보여야 하므로
+			calculateTotalPrice();
+
+			//수량 -, + 버튼을 누를때마다 총가격을 구한다
+			$(".count_btn").click(function() {
+				calculateTotalPrice();
+			})
+		});
+
+		function calculateTotalPrice() {
+			var count = $("#count").val(); //수량
+			var price = $("#price").val(); //가격
+			var totalPrice = (price * count).toLocaleString('ko-KR'); //천단위 콤마
+			$("#totalPrice").html(totalPrice + '원'); //총가격 출력
+		}
+
+		function order() {
+			var token = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+
+			var url = "/order";
+
+			//controller(서버)에 전달할 데이터
+			var paramData = {
+				itemId : $("#itemId").val(), //item의 id
+				count : $("#count").val()
+			//수량
+			}
+
+			//★전달하기 전에 데이터를 반드시 JSON -> 문자열로 만들어야 한다.
+			var param = JSON.stringify(paramData);
+
+			$.ajax({
+				url : url, //request URL
+				type : "POST", //전송방식
+				contentType : "application/json",
+				data : param, //서버에 전송할 데이터
+				beforeSend : function(xhr) {
+					//데이터를 전송하기전에 헤더에 csrf 값을 설정
+					xhr.setRequestHeader(header, token);
+				},
+				dataType : "json",
+				cache : false,
+				success : function(result, status) {
+					alert("주문이 완료 되었습니다." + result);
+					//location.href = '/';
+				},
+				error : function(jqXHR, status, error) {
+					if (jqXHR.status == '401') {
+						alert('로그인 후 이용해주세요.');
+						location.href = '/members/login';
+					} else {
+						//에러메세지 출력(ResponseEntity에서 받아온 값을 출력해준다)
+						alert(jqXHR.responseText);
+					}
+				}
+			});
+
+		}
 	</script>
 </th:block>
 </html>
