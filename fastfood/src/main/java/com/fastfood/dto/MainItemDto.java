@@ -19,16 +19,19 @@ public class MainItemDto {
 	
 	private Integer price;
 	
+	private ItemSellStatus itemSellStatus;
+	
 	
 	
 	@QueryProjection //쿼리 dsl로 결과 조회 할때 MainItemDto 객체로 바로 받아올 수 있다.
 	public MainItemDto(Long id, String itemNm, String itemDetail,
-			String imgUrl, Integer price) {
+			String imgUrl, Integer price, ItemSellStatus itemSellStatus) {
 		this.id = id;
 		this.itemNm = itemNm;
 		this.itemDetail = itemDetail;
 		this.imgUrl = imgUrl;
 		this.price = price;
+		this.itemSellStatus = itemSellStatus;
 
 	}
 }

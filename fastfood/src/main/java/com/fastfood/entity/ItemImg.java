@@ -1,5 +1,6 @@
 package com.fastfood.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,7 +32,7 @@ public class ItemImg {
 	
 	private String imgUrl;
 	
-	private String repImgYn;
+	private String repimgYn;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_id")

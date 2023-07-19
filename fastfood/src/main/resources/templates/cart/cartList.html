@@ -3,6 +3,11 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	layout:decorate="~{layouts/layout1}">
 
+<head>
+<meta name="_csrf" th:content="${_csrf.token}" />
+<meta name="_csrf_header" th:content="${_csrf.headerName}" />
+</head>
+
 <!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css">
 	<style>
@@ -17,7 +22,7 @@
 				<div class="heading_container">
 					<h3 class="qa-h3">카트</h3>
 				</div>
-				<div class="row">
+				<div class="row" >
 					<div class="col-md-"></div>
 					<div class="col-md-12">
 						<div class="form_container">
@@ -36,31 +41,20 @@
 												<th scope="col">취소</th>
 											</tr>
 										</thead>
-										<tbody>
-											<tr>
-												<th class="cart-item" scope="row">1</th>
-												<td class="cart-item">피자</td>
-												<td class="cart-item"><img src="/images/f1.png"
-													class="img-thumbnail" alt="상품사진"></td>
-												<td class="cart-item">18000원</td>
-												<td class="cart-item"><button
+										<tbody th:each="order : ${orders.getContent()}">
+											<tr th:each="orderItem: ${order.orderItemDtoList}">
+												<th class="cart-item"   scope="row">1</th>
+												<td class="cart-item" th:text="${orderItem.itemNm}">피자</td>
+												<td class="cart-item"><img th:src="${orderItem.imgUrl}"
+													class="img-thumbnail" th:alt="${orderItem.itemNm}"></td>
+												<td class="cart-item" th:text="${#numbers.formatInteger(orderItem.orderPrice, 0, 'COMMA')} +'원'">18000원</td>
+												<td class="cart-item" th:text="${orderItem.count} + '개'"><button
 														class="remove cartbtn-minus cartbtn">-</button>1개
 													<button class="remove cartbtn-plus cartbtn">+</button></td>
 												<td class="cart-item">18000원</td>
 												<td class="cart-item"><button class="remove">x</button></td>
 											</tr>
-											<tr>
-												<th class="cart-item" scope="row">1</th>
-												<td class="cart-item">햄버거</td>
-												<td class="cart-item"><img src="/images/f2.png"
-													class="img-thumbnail" alt="상품사진"></td>
-												<td class="cart-item">11000원</td>
-												<td class="cart-item"><button
-														class="remove cartbtn-minus cartbtn">-</button>1개
-													<button class="remove cartbtn-plus cartbtn">+</button></td>
-												<td class="cart-item">11000원</td>
-												<td class="cart-item"><button class="remove">x</button></td>
-											</tr>
+
 										</tbody>
 									</table>
 								</div>

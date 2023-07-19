@@ -1334,6 +1334,71 @@ a:focus {
 	background-color: #EF8214 !important;
 }
 
+.itemDtl-p {
+	font-weight: bold;
+	color: red;
+}
+
+.itemDtl-totalPrice {
+	display: grid;
+	justify-content: end;
+}
+
+.iteminfo-list-btn {
+	display: flex;
+	justify-content: end;
+	margin-right: 70px;
+	margin-top: 10px;
+}
+
+.iteminfo-delete :hover {
+	background-color: black !important;
+}
+
+.itemDetail-detail {
+	width: 310px;
+	height: 40px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.owl-nav {
+	text-align: center;
+	font-size: 3rem;
+	display: flex;
+	justify-content: space-around;
+}
+
+/* header 모달 검색창 */
+
+.modal-header {
+	display: flex;
+	justify-content: center;
+	font-style: none;
+}
+
+.modal-body {
+	display: flex;
+	justify-content: center;
+}
+
+.menusearch-header {
+	font-family: none;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.modalfooter-search-btn {
+	background-color: #FFBE33;
+	border-color: white;
+}
+
+.modalfooter-search-btn:hover {
+	background-color: #EF8214;
+}
 
 
-
+.header-search {
+	
+}

@@ -113,12 +113,13 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
 							item.itemNm,
 							item.itemDetail,
 							itemImg.imgUrl,
-							item.price)
+							item.price,
+							item.itemSellStatus)
 
 						)
 						.from(itemImg)
 						.join(itemImg.item, item)
-						.where(itemImg.repImgYn.eq("Y"))
+						.where(itemImg.repimgYn.eq("Y"))
 						.where(itemNmLike(itemSearchDto.getSearchQuery()))
 						.orderBy(item.id.desc())
 						.offset(pageable.getOffset())
@@ -129,7 +130,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
 					.select(Wildcard.count)
 					.from(itemImg)
 					.join(itemImg.item, item)
-					.where(itemImg.repImgYn.eq("Y"))
+					.where(itemImg.repimgYn.eq("Y"))
 					.where(itemNmLike(itemSearchDto.getSearchQuery()))
 					.fetchOne();
 						

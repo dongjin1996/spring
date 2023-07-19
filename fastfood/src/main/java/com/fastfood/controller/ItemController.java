@@ -1,19 +1,24 @@
 package com.fastfood.controller;
 
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fastfood.dto.ItemFormDto;
@@ -21,6 +26,7 @@ import com.fastfood.dto.ItemSearchDto;
 import com.fastfood.dto.MainItemDto;
 import com.fastfood.entity.Item;
 import com.fastfood.service.ItemService;
+import com.fastfood.service.OrderService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +36,7 @@ import lombok.RequiredArgsConstructor;
 public class ItemController {
 	
 	private final ItemService itemService;
+
 	
 	//메뉴 전체 리스트
 	@GetMapping (value = "item/menu")
@@ -160,6 +167,15 @@ public class ItemController {
 		ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
 		model.addAttribute("item", itemFormDto);
 		return "/item/itemInfo";
+	}
+	
+	//상품정보 상세페이지 삭제
+	@DeleteMapping("/item/{itemId}/delete")
+	public @ResponseBody ResponseEntity deleteItem(@PathVariable("itemId") Long itemId, Principal principal) {
+		
+		itemService.deleteMenu(itemId);
+		
+		return new ResponseEntity<Long> (itemId, HttpStatus.OK);
 	}
 
 }

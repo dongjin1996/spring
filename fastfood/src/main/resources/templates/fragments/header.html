@@ -17,6 +17,12 @@
 				</a>
 
 
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class=""> </span>
+				</button>
 
 				<div class="collapse navbar-collapse main-nav"
 					id="navbarSupportedContent">
@@ -52,7 +58,7 @@
 						<a href="/member/login" class="user_link"
 							sec:authorize="isAnonymous()"> <i class="fa fa-user"
 							aria-hidden="true"></i>
-						</a> <a class="cart_link" href="/cart/cartlist"
+						</a> <a class="cart_link" href="/carts"
 							sec:authorize="isAuthenticated()"> <svg version="1.1"
 								id="Capa_1" xmlns="http://www.w3.org/2000/svg"
 								xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -115,18 +121,43 @@
                 </svg>
 						</a>
 						<form class="form-inline">
-							<button class="btn  my-2 my-sm-0 nav_search-btn js-search-open"
-								type="submit">
-								<i class="fa fa-search icon-search" aria-hidden="true"></i>
+							<button class="btn  my-2 my-sm-0 nav_search-btn js-search-open " 
+								type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+								<i class="fa fa-search icon-search" aria-hidden="true" ></i>
 							</button>
 						</form>
 						<a href="/item/menu" class="order_online"> 주문하러 가기 </a>
 					</div>
 				</div>
 			</nav>
+
+
 		</div>
+		
+		<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 menusearch-header" id="exampleModalLabel">메뉴검색</h1>
+
+      </div>
+      <div class="modal-body">
+      <form th:action="@{/item/menu}" method="GET">
+        <input type="text" name="searchQuery" placeholder="메뉴검색이 가능합니다." class="header-search" autofocus="autofocus">
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary modalfooter-search-btn" id="searchQuery" th:value="searchQuery">검색</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >닫기</button>
+      </div>
+    </div>
+  </div>
+</div>
 	</header>
+	
 	<!-- end header section -->
+	
 </div>
 
 

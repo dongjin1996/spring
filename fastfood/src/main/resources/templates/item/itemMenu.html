@@ -44,7 +44,7 @@
 									</div>
 									<div class="detail-box">
 										<h5>[[${item.itemNm}]]</h5>
-										<p>[[${item.itemDetail}]]</p>
+										<p class="itemDetail-detail">[[${item.itemDetail}]]</p>
 										<div class="options">
 											<h6>[[${#numbers.formatInteger(item.price, 0, 'COMMA')}]]원</h6>
 											<a th:href="'/menu/' + ${item.id}" > <svg version="1.1" id="Capa_1"
@@ -109,7 +109,7 @@
                       </svg>
 											</a>
 										</div>
-										<div>판매중</div>
+										<div>[[${item.itemSellStatus}]]</div>
 									</div>
 								</div>
 							</div>

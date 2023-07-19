@@ -63,4 +63,14 @@ public class QaService {
 	}
 	
 	
+	//글삭제
+	
+	public void deleteQa(Long qaId) {
+		Qa qa = qaRepository.findById(qaId)
+					.orElseThrow(EntityNotFoundException::new);
+		
+		qaRepository.delete(qa);
+	}
+	
+	
 }

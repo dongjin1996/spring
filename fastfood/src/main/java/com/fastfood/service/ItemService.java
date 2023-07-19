@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fastfood.dto.ItemFormDto;
 import com.fastfood.dto.ItemImgDto;
+import com.fastfood.dto.ItemRankDto;
 import com.fastfood.dto.ItemSearchDto;
 import com.fastfood.dto.MainItemDto;
 import com.fastfood.entity.Item;
@@ -43,9 +44,9 @@ public class ItemService {
 			
 			//첫번째 이미지 일때 대표상품 이미지 지정
 			if(i ==0 ) {
-				itemImg.setRepImgYn("Y");
+				itemImg.setRepimgYn("Y");
 			} else {
-				itemImg.setRepImgYn("N");
+				itemImg.setRepimgYn("N");
 			}
 			
 			itemImgService.saveItemImg(itemImg, itemImgFileList.get(i));
@@ -111,4 +112,20 @@ public class ItemService {
 		Page<MainItemDto> mainItemPage = itemRepository.getMainItemPage(itemSearchDto, pageable);
 		return mainItemPage;
 	}
+	
+	//메뉴 삭제	
+	public void deleteMenu(Long itemId) {
+		Item item = itemRepository.findById(itemId)
+						.orElseThrow(EntityNotFoundException::new);
+		List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
+		itemImgRepository.deleteAll(itemImgList);
+		
+		itemRepository.delete(item);
+	}
+	
+	@Transactional(readOnly = true)
+	public List<ItemRankDto> getItemRankList() {
+		return itemRepository.getItemRankList();
+	}
+
 }

@@ -19,7 +19,7 @@ public class SecurityConfig {
 		
 		http.authorizeHttpRequests(authorize -> authorize
 				.requestMatchers("/css/**", "/js/**", "/img/**","/images/**","/fonts/**").permitAll()
-				.requestMatchers("/", "/member/**", "/item/**").permitAll()
+				.requestMatchers("/", "/member/**", "/item/**","/menu/**").permitAll()
 				.requestMatchers("/favicon.ico", "/error").permitAll()
 				.requestMatchers("member/qa").hasRole("USER")
 				.requestMatchers("/admin/**").hasRole("ADMIN") //"admin"으로 시작하는 경로는 어드민만 접속가능
