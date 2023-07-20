@@ -50,6 +50,9 @@
 							href="/user/member/qa" sec:authorize="isAuthenticated()">문의하기</a>
 						</li>
 						<li class="nav-item"><a class="nav-link"
+							href="/orders/" sec:authorize="isAuthenticated()">주문내역</a>
+						</li>
+						<li class="nav-item"><a class="nav-link"
 							href="/member/logout" sec:authorize="isAuthenticated()">로그아웃</a>
 						</li>
 					</ul>
@@ -145,18 +148,18 @@
       <div class="modal-body">
       <form th:action="@{/item/menu}" method="GET">
         <input type="text" name="searchQuery" placeholder="메뉴검색이 가능합니다." class="header-search" autofocus="autofocus">
+        <button type="submit" class="btn btn-primary modalfooter-search-btn" >검색</button>
       </form>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary modalfooter-search-btn" id="searchQuery" th:value="searchQuery">검색</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >닫기</button>
+        <button type="button" class="btn btn-secondary modalfooter-close" data-bs-dismiss="modal" >닫기</button>
       </div>
     </div>
   </div>
 </div>
 	</header>
 	
-	<!-- end header section -->
+	<!-- end header section -->	
 	
 </div>
 

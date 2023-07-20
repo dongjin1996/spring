@@ -1,26 +1,7 @@
 
-JQuery(document).ready(function($){
+jQuery(document).ready(function($){
 	
-	var searchShow = function() {
-		// alert();
-		var searchWrap = $('.search-wrap');
-		$('.js-search-open').on('click', function(e){
-			e.preventDefault();
-			searchWrap.addClass('active');
-			setTimeout(function(){
-				searchWrap.find('.form-control').focus();
-			}, 300);
-		});
-		
-		$('.js-search-close').on('click', function(e){
-			e.preventDefault();
-			searchWrap.removeClass('active');
-		})
-	};
-	
-	searchShow();
-	
-	
+
 	var sitePlusMinus = function() {
 		$('.js-btn-minus').on('click', function(e){
 			e.preventDefault();

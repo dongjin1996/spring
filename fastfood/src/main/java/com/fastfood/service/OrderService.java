@@ -103,4 +103,24 @@ public class OrderService {
 		
 		return true;
 	}
+	
+	//주문취소
+	public void cancelOrder(Long orderId) {
+		Order order = orderRepository.findById(orderId)
+								.orElseThrow(EntityNotFoundException::new);
+		
+		//OrderStatus를 update- > entity의 필드 값을 바꿔주면 된다.
+		order.cancelOrder();
+	}
+	
+	
+	//주문삭제
+	public void deleteOrder(Long orderId) {
+		Order order = orderRepository.findById(orderId)
+							.orElseThrow(EntityNotFoundException::new);
+		
+		//delete
+		orderRepository.delete(order);
+	}
+	
 }

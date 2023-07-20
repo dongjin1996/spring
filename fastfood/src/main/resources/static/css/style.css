@@ -1392,13 +1392,110 @@ a:focus {
 .modalfooter-search-btn {
 	background-color: #FFBE33;
 	border-color: white;
+	padding: 11px;
 }
 
 .modalfooter-search-btn:hover {
 	background-color: #EF8214;
 }
 
+.modalfooter-search-btn:active {
+	background-color:  #EF8214 !important;
+	border-color: white !important;
+}
+
+.modalfooter-close {
+	width: 100px;
+}
 
 .header-search {
+	height: 50px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+
+
+#count {
+	flex: none;
+	width: 50px !important;
+    text-align: center;
+}
+
+.count_btn {
+	padding: 5px;
+	border-radius: 5px;
+	background-color: #FFBE33;
+	color: white;
+	border-color: white;
+}
+
+.count_btn:hover {
+
+	border-color: white;
+}
+
+.count_btn:active {
+	background-color: #EF8214 !important;
+}
+
+.dtl-sellstatus {
+	margin-top: 10px;
+}
+
+
+/* OrderHist*/
+
+.repImgDiv {
+	display: flex;
+	justify-content: center;
+	max-width: 40%;
+	min-width: 40%;
+}
+
+.orderHist-img {
+	width: 40%;
+	margin-top: 10px;
+}
+
+.align-self-center {
+	margin-right: 15px;
+	margin-top: 30px;
+}
+
+.orderhist-btn {
+	margin-right: 40px;
+	margin-top: 20px;
+}
+
+.orderhist-cancel {
+	margin-bottom: 10px;
+}
+
+.orderhist-delete{
+	background-color: #dd0000;
+	border-color: gray;
+}
+
+.orderhist-delete:hover {
+	background-color: #ae0000;
+}
+
+.orderhist-delete:active {
+	background-color: #ae0000 !important;
+}
+
+.orderhist-btns {
+	padding: 7px;
+	font-size: 14px;
+	inline-size: max-content;
 	
+}
+
+.custom_nav-container .navbar-nav {
+	padding-left: 0px;
+}
+
+.orderHist-page {
+	margin-top: 40px;
 }

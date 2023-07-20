@@ -32,7 +32,7 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th scope="col">상품번호</th>
+												<th scope="col">주문번호</th>
 												<th scope="col">상품명</th>
 												<th scope="col">이미지</th>
 												<th scope="col">가격</th>
@@ -41,14 +41,14 @@
 												<th scope="col">취소</th>
 											</tr>
 										</thead>
-										<tbody th:each="order : ${orders.getContent()}">
-											<tr th:each="orderItem: ${order.orderItemDtoList}">
-												<th class="cart-item"   scope="row">1</th>
-												<td class="cart-item" th:text="${orderItem.itemNm}">피자</td>
-												<td class="cart-item"><img th:src="${orderItem.imgUrl}"
-													class="img-thumbnail" th:alt="${orderItem.itemNm}"></td>
-												<td class="cart-item" th:text="${#numbers.formatInteger(orderItem.orderPrice, 0, 'COMMA')} +'원'">18000원</td>
-												<td class="cart-item" th:text="${orderItem.count} + '개'"><button
+										<tbody th:each="cart : ${carts.getContent()}">
+											<tr th:each="cartItem: ${cart.cartItemDtoList}">
+												<th class="cart-item" th:text="${cartItem.id}"  scope="row">1</th>
+												<td class="cart-item" th:text="${cartItem.itemNm}">피자</td>
+												<td class="cart-item"><img th:src="${cartItem.imgUrl}"
+													class="img-thumbnail" th:alt="${cartItem.itemNm}"></td>
+												<td class="cart-item" th:text="${#numbers.formatInteger(cartItem.cartPrice, 0, 'COMMA')} +'원'">18000원</td>
+												<td class="cart-item" th:text="${cartItem.count} + '개'"><button
 														class="remove cartbtn-minus cartbtn">-</button>1개
 													<button class="remove cartbtn-plus cartbtn">+</button></td>
 												<td class="cart-item">18000원</td>
