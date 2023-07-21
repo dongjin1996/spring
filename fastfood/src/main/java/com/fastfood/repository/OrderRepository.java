@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.fastfood.entity.Order;
+import com.fastfood.entity.OrderItem;
 
 public interface OrderRepository extends JpaRepository<Order, Long>{
 	
@@ -18,4 +19,6 @@ public interface OrderRepository extends JpaRepository<Order, Long>{
 	//현재 로그인한 회원의 주문 개수가 몇개인지 조회(total)
 	@Query("select count(o) from Order o where o.member.email = :email")
 	Long countOrder(@Param("email") String email);
+	
+	
 }

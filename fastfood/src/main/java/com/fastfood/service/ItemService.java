@@ -16,8 +16,11 @@ import com.fastfood.dto.ItemSearchDto;
 import com.fastfood.dto.MainItemDto;
 import com.fastfood.entity.Item;
 import com.fastfood.entity.ItemImg;
+import com.fastfood.entity.OrderItem;
 import com.fastfood.repository.ItemImgRepository;
 import com.fastfood.repository.ItemRepository;
+import com.fastfood.repository.OrderItemRepository;
+import com.fastfood.repository.OrderRepository;
 
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +32,7 @@ public class ItemService {
 	private final ItemRepository itemRepository;
 	private final ItemImgService itemImgService;
 	private final ItemImgRepository itemImgRepository;
+	private final OrderItemRepository orderItemRepository;
 	
 	//item 테이블에 상품등록
 	public Long saveItem(ItemFormDto itemFormDto, List<MultipartFile> itemImgFileList) throws Exception {
@@ -119,6 +123,9 @@ public class ItemService {
 						.orElseThrow(EntityNotFoundException::new);
 		List<ItemImg> itemImgList = itemImgRepository.findByItemIdOrderByIdAsc(itemId);
 		itemImgRepository.deleteAll(itemImgList);
+		List<OrderItem> orderItemList = orderItemRepository.findByItemIdOrderByIdAsc(itemId);
+		orderItemRepository.deleteAll(orderItemList);
+
 		
 		itemRepository.delete(item);
 	}

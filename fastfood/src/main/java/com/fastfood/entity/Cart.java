@@ -1,5 +1,6 @@
 package com.fastfood.entity;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +36,8 @@ public class Cart {
 	@JoinColumn(name = "member_id")
 	private Member member;
 	
+
+	
 	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL,
 			orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<CartItem> cartItems = new ArrayList<>();
@@ -48,6 +51,10 @@ public class Cart {
 	public static Cart createCart(Member member, List<CartItem> cartItemList) {
 		Cart cart = new Cart();
 		cart.setMember(member);
+		
+		for(CartItem cartItem : cartItemList) {
+			cart.addCartItem(cartItem);
+		}
 		
 		return cart;
 	}

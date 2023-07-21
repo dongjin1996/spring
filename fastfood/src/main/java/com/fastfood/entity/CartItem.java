@@ -27,7 +27,7 @@ public class CartItem extends BaseEntity{
 	
 	private int count;  //수량
 	
-	private int CartPrice; //장바구니가격
+	private int cartPrice; //장바구니가격
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "item_id")

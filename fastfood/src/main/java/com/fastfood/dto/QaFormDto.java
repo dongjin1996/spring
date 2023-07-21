@@ -1,6 +1,7 @@
 package com.fastfood.dto;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.modelmapper.ModelMapper;
 
@@ -28,6 +29,8 @@ public class QaFormDto {
 	private String createBy;  //등록자
 	
 	private static ModelMapper modelMapper = new ModelMapper();
+	
+
 	
 	//dto -> entity로 바꿈
 	public Qa createQa() {
