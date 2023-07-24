@@ -6,6 +6,9 @@
 <!-- 각 페이지의 CSS가 작성될 위치 -->
 <th:block layout:fragment="css">
 	<style>
+	input::placeholder {
+			color: red;
+			}
 </style>
 </th:block>
 
@@ -23,20 +26,26 @@
 						<div class="form_container">
 							<form action="">
 								<div>
-									<label class="memberForm-label">이메일</label> <input type="email"
-										class="form-control" placeholder="E-mail" />
+									<label class="memberForm-label">이메일</label> 
+									<input type="email"
+										class="form-control find-email" placeholder="E-mail을 입력해주세요." />
+								</div>
+								<div>
+									<label class="memberForm-label">이름</label> 
+									<input type="text"
+										class="form-control" placeholder="이름을 입력해주세요." />
 								</div>
 								<div class="btn_box">
-									<button>찾기</button>
-									<button th:onclick="javascript:location.href='/';">취소
+									<button type="button">찾기</button>
+									<button type="button" onclick="location.href='/member/login'">취소
 									</button>
 								</div>
 							</form>
 						</div>
 					</div>
-					</div>
-					<div class="col-md-2"></div>
 				</div>
+				<div class="col-md-2"></div>
+			</div>
 		</section>
 	</body>
 </div>

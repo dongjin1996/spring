@@ -1499,3 +1499,12 @@ a:focus {
 .orderHist-page {
 	margin-top: 40px;
 }
+
+.find-email input::placeholder {
+	color: red;
+}
+
+/* placeholder 색상변경 */
+input::-webkit-input-placeholder {
+  color: #ccc !important;
+}
