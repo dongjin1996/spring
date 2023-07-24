@@ -26,17 +26,19 @@
 						<div class="form_container">
 							<form action="">
 								<div>
-									<label class="memberForm-label">이메일</label> 
+									<label class="memberForm-label" for="email">이메일</label> 
 									<input type="email"
-										class="form-control find-email" placeholder="E-mail을 입력해주세요." />
+										class="form-control find-email" placeholder="E-mail을 입력해주세요." id="email" />
 								</div>
 								<div>
-									<label class="memberForm-label">이름</label> 
+									<label class="memberForm-label" for="name">이름</label> 
 									<input type="text"
-										class="form-control" placeholder="이름을 입력해주세요." />
+										class="form-control" placeholder="이름을 입력해주세요." id="name"/>
 								</div>
+								
+								<div id="checkMsg" style="color: red"></div>
 								<div class="btn_box">
-									<button type="button">찾기</button>
+									<button type="button" id="checkEmail">찾기</button>
 									<button type="button" onclick="location.href='/member/login'">취소
 									</button>
 								</div>

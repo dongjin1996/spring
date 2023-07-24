@@ -1,6 +1,8 @@
 package com.fastfood.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fastfood.dto.MailDto;
 import com.fastfood.dto.MemberFormDto;
 import com.fastfood.dto.QaFormDto;
 import com.fastfood.dto.QaSearchDto;
@@ -25,6 +28,8 @@ import com.fastfood.entity.Member;
 import com.fastfood.entity.Qa;
 import com.fastfood.service.MemberService;
 import com.fastfood.service.QaService;
+import com.fastfood.service.SendEmailService;
+import com.fastfood.service.UserService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +41,8 @@ public class MemberController {
 	private final MemberService memberService;
 	private final PasswordEncoder passwordEncoder;
 	private final QaService qaService;
+	private final UserService userService;
+	private final SendEmailService sendEmailService;
 	
 	//어바웃 페이지
 	@GetMapping(value = "member/about")
@@ -155,5 +162,22 @@ public class MemberController {
 		return "member/memberFind";
 	}
 	
+	//비밀번호찾기 이메일 보내기
+	@GetMapping("/check/findPw")
+	public @ResponseBody Map<String, Boolean> pw_find(String email, String name) {
+		Map<String, Boolean> json = new HashMap<>();
+		boolean pwFindcheck = userService.userEmailCheck(email, name);
+		
+		System.out.println(pwFindcheck);
+		json.put("check", pwFindcheck);
+		return json;
+	}
+	
+	//등록된 이메일로 임시비밀번호 발송하고 발송된 임시비밀번호로 사용자의 pw를 변경하는 컨트롤러
+	@PostMapping("/check/findPw/sendEmail")
+	public @ResponseBody void sendEmail(String email, String name) {
+		MailDto dto = sendEmailService.createMailAndChangePassword(email, name);
+		sendEmailService.mailSend(dto);
+	}
 	
 }
