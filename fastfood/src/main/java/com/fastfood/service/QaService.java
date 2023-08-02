@@ -38,7 +38,7 @@ public class QaService {
 		Qa qa = qaRepository.findById(qaId)
 				  .orElseThrow(EntityNotFoundException::new);
 		
-		//2.QA 엔티티 객체 -> dto로 변환
+		//2.QA 엔티티 객체 -> dto로 변환pu
 		QaFormDto qaFormDto = QaFormDto.of(qa);
 		
 		return qaFormDto;

@@ -66,4 +66,11 @@ public class Member extends BaseEntity{
 		return member;
 	}
 	
+	//member 엔티티 수정
+	public void updateMember(MemberFormDto memberFormDto) {
+		this.name = memberFormDto.getName();
+		this.password = memberFormDto.getPassword();
+		this.address = memberFormDto.getAddress();
+		this.birth = memberFormDto.getBirth();
+	}
 }

@@ -55,7 +55,49 @@
 <!-- 각 페이지의 스크립트가 작성될 위치 -->
 <th:block layout:fragment="script">
 	<script th:inline="javascript">
-		
+
+    $('.modal').on('hidden.bs.modal', function (e) {
+        console.log('modal close');
+        $(this).find('form')[0].reset()
+    });
+
+    $("#checkEmail").click(function () {
+        let email = $("#email").val();
+        let name = $("#name").val();
+
+        $.ajax({
+            type: "GET",
+            url: "/check/findPw",
+            data: {
+                "email": email,
+                "name": name
+            },
+            success: function (res) {
+                if (res['check']) {
+                    swal("발송 완료!", "입력하신 이메일로 임시비밀번호가 발송되었습니다.", "success").then((OK) = > {
+                        if(OK) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/check/findPw/sendEmail",
+                                data: {
+                                    "email": email,
+                                    "name": name
+                                }
+                            })
+                            window.location = "/member/login";
+                        }
+
+
+                    }
+                )
+                    $('#checkMsg').html('<p style="color:darkblue"></p>');
+                } else {
+                    $('#checkMsg').html('<p style="color:red">일치하는 정보가 없습니다.</p>');
+                }
+            }
+        })
+    })
+
 	</script>
 </th:block>
 </html>

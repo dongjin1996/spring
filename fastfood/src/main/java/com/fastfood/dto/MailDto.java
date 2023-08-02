@@ -1,5 +1,6 @@
 package com.fastfood.dto;
 
+import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

@@ -7,9 +7,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fastfood.dto.MemberFormDto;
 import com.fastfood.entity.Member;
 import com.fastfood.repository.MemberRepository;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -53,5 +55,30 @@ public class MemberService implements UserDetailsService{
 				.password(member.getPassword())
 				.roles(member.getRole().toString())
 				.build();
+	}
+	
+	//회원정보를 가져오는 기능을 할 서비스
+	@Transactional
+	public MemberFormDto getMemberDtl(Long memberId) {
+		
+		//1.member테이블에 있는 데이터를 가져온다
+		Member member = memberRepository.findById(memberId)
+										.orElseThrow(EntityNotFoundException::new);
+		
+		MemberFormDto memberFormDto = MemberFormDto.of(member);
+		
+		return memberFormDto;
+		
+	}
+	
+	//회원정보 수정
+	public Long updateMember(MemberFormDto memberFormDto) throws Exception {
+		
+		Member member = memberRepository.findById(memberFormDto.getId())
+										.orElseThrow(EntityNotFoundException::new);
+		
+		member.updateMember(memberFormDto);
+		
+		return member.getId();
 	}
 }
