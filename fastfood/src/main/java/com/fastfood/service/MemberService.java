@@ -1,5 +1,7 @@
 package com.fastfood.service;
 
+import java.security.Principal;
+
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

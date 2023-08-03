@@ -13,6 +13,7 @@ import org.thymeleaf.util.StringUtils;
 import com.fastfood.dto.CartDto;
 import com.fastfood.dto.CartItemDto;
 import com.fastfood.dto.CartListDto;
+import com.fastfood.entity.Cart;
 import com.fastfood.entity.CartItem;
 import com.fastfood.entity.Item;
 import com.fastfood.entity.ItemImg;
@@ -100,5 +101,13 @@ public class Cartservice {
 		}
 		
 		return true;
+	}
+	
+	//카트삭제
+	public void deleteCartItem(Long cartItemId) {
+		Cart cart = cartRepository.findById(cartItemId)
+									.orElseThrow(EntityNotFoundException::new);
+		
+		cartRepository.delete(cart);
 	}
 }
