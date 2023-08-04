@@ -72,7 +72,7 @@ public class CartController {
 	public String CartList(@PathVariable("page") Optional<Integer> page, Principal principal, Model model) {
 		
 		//1.한페이지 당 4개의 데이터를 가지고 오도록 설정
-		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 4);
+		Pageable pageable = PageRequest.of(page.isPresent() ? page.get() : 0, 9);
 		
 		//2.서비스 호출
 		Page<CartListDto> cartListDtoList = cartservice.getCartList(principal.getName(), pageable);

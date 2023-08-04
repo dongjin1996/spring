@@ -186,9 +186,9 @@
 	            var token = $("meta[name='_csrf']").attr("content");
 	            var header = $("meta[name='_csrf_header']").attr("content");
 
-	            var url = "/cartItem/" + cartItemId;
+	            var url = "/cartItem/" + cartItemId ;
 
-	            $.ajax({
+	            $.ajax({	
 	                url      : url,
 	                type     : "DELETE",
 	                beforeSend : function(xhr){

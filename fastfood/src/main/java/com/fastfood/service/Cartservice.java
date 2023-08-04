@@ -18,6 +18,7 @@ import com.fastfood.entity.CartItem;
 import com.fastfood.entity.Item;
 import com.fastfood.entity.ItemImg;
 import com.fastfood.entity.Member;
+import com.fastfood.repository.CartItemRepository;
 import com.fastfood.repository.CartRepository;
 import com.fastfood.repository.ItemImgRepository;
 import com.fastfood.repository.ItemRepository;
@@ -33,6 +34,7 @@ public class Cartservice {
 	private final ItemRepository itemRepository;
 	private final MemberRepository memberRepository;
 	private final CartRepository cartRepository;
+	private final CartItemRepository cartItemRepository;
 	private final ItemImgRepository itemImgRepository;
 	
 	//장바구니 넣기
@@ -105,9 +107,9 @@ public class Cartservice {
 	
 	//카트삭제
 	public void deleteCartItem(Long cartItemId) {
-		Cart cart = cartRepository.findById(cartItemId)
+		CartItem cartItem = cartItemRepository.findById(cartItemId)
 									.orElseThrow(EntityNotFoundException::new);
 		
-		cartRepository.delete(cart);
+		cartItemRepository.delete(cartItem);
 	}
 }
