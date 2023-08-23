@@ -1,5 +1,6 @@
 package com.fastfood.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,9 +17,12 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class ItemImgService {
 	
-	private String itemImgLocation = "c:/fastfood/menu";
+	/* private String itemImgLocation = "c:/fastfood/menu"; */
 	private final ItemImgRepository itemImgRepository;
 	private final FileService fileService;
+	
+	@Value("${itemImgLocation}")
+	private String itemImgLocation;
 	
 	
 	/*

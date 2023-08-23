@@ -32,6 +32,6 @@ public class MainController {
 		model.addAttribute("itemsRank", itemsRank);
 		model.addAttribute("itemSearchDto", itemSearchDto);
 		
-		return "/main";
+		return "main";
 	}
 }

@@ -49,14 +49,14 @@ public class ItemController {
 		model.addAttribute("itemSearchDto", itemSearchDto);
 		model.addAttribute("maxPage", 5);
 		
-		return "/item/itemMenu";
+		return "item/itemMenu";
 	}
 	
 	//상품등록 페이지
 	@GetMapping(value = "/admin/item/new")
 	public String itemForm(Model model) {
 		model.addAttribute("itemFormDto", new ItemFormDto());
-		return "/item/itemForm";
+		return "item/itemForm";
 	}
 	
 	//상품, 상품이미지 등록(insert)
@@ -149,7 +149,7 @@ public class ItemController {
 		model.addAttribute("maxPage", 5); //상품관리 페이지 하단에 보여줄 최대 페이지 번호
 		
 		
-		return "/item/itemMng";
+		return "item/itemMng";
 	}
 	
 	//상품 상세 페이지
@@ -166,7 +166,7 @@ public class ItemController {
 	public String itemInfo(Model model, @PathVariable("itemId") Long itemId) {
 		ItemFormDto itemFormDto = itemService.getItemDtl(itemId);
 		model.addAttribute("item", itemFormDto);
-		return "/item/itemInfo";
+		return "item/itemInfo";
 	}
 	
 	//상품정보 상세페이지 삭제
